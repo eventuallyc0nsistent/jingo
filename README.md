@@ -13,7 +13,7 @@
 
 ###Part 1
 
-+Write a small message of few words and add hyperlink.
++ Write a small message of few words and add hyperlink.
  Note is associated with the localtin and the radius of interest (Say 100 yards) around the location.
 + Set the note to be seen during the time period (Start date and End date and the time to be seen).
 + Add keyword(tags or channel) that specifies what the note is (Just like hashtags on twitter).
