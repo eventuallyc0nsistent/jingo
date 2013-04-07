@@ -1,3 +1,4 @@
+<?php 	require_once('header.php') ; ?>
 <?php
 
 	$key = $_GET['code'];
@@ -45,3 +46,8 @@
 	echo $phone ;
 
 ?>
+
+<div class="hero-unit">
+	<a href="login.php">Refresh</a>
+</div>
+<?php require_once('footer.php') ; ?>
