@@ -5,11 +5,11 @@
 
 	$client_id ="5LENUVBOHJTM5EHQT11GZZYZVVWSRLIIL1WGSRBRF0RMXN2I";
 	$client_secret = "BMGDMIILOH5FHOEY0UHYB2T2CQY1CRNYPQCCSF2ZCXYGG1CS";
-	$redirect_uri = "https://jingo.heroku.com/login.php"; //In this example the redirect_uri is just pointing back to this file
+	$redirect_uri = "https://jingo.heroku.com/4sqpush.php"; //In this example the redirect_uri is just pointing back to this file
 
-	$uri = file_get_contents("https://foursquare.com/oauth2/access_token?client_id=".$client_id."&client_secret=".$client_secret."&grant_type=authorization_code&redirect_uri=".$redirect_uri."&code=".$key, 
-	    true);
-	echo $uri;
+	$uri = file_get_contents("https://foursquare.com/oauth2/access_token?client_id=".$client_id."&client_secret=".$client_secret."&grant_type=authorization_code&redirect_uri=".$redirect_uri."&code=".$key, true);
+
+
 	$obj = json_decode($uri);
 
 	$usertoken = $obj->access_token; 
@@ -48,6 +48,6 @@
 ?>
 
 <div class="hero-unit">
-	<a href="login.php">Refresh</a>
+	<a href="4sqppush.php">Login</a>
 </div>
 <?php require_once('footer.php') ; ?>

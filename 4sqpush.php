@@ -20,6 +20,8 @@ $lat = $obj->venue->location->lat;
 $lng = $obj->venue->location->lng;
 $userid = $obj->user->id;
 
+print_r($obj) ;
+
 // This is where the check-in comment or "shout" is stored
 // if you are looking for a keyword or hashtag in a user's checkin, it will be in the "shout"
 
