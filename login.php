@@ -4,7 +4,7 @@
 
 	$client_id ="5LENUVBOHJTM5EHQT11GZZYZVVWSRLIIL1WGSRBRF0RMXN2I";
 	$client_secret = "BMGDMIILOH5FHOEY0UHYB2T2CQY1CRNYPQCCSF2ZCXYGG1CS";
-	$redirect_uri = "http://kirankoduru.com/project/jingo/login.php"; //In this example the redirect_uri is just pointing back to this file
+	$redirect_uri = "https://jingo.heroku.com/login.php"; //In this example the redirect_uri is just pointing back to this file
 
 	$uri = file_get_contents("https://foursquare.com/oauth2/access_token?client_id=".$client_id."&client_secret=".$client_secret."&grant_type=authorization_code&redirect_uri=".$redirect_uri."&code=".$key, 
 	    true);
