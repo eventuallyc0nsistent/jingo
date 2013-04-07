@@ -9,7 +9,7 @@
 
 	$uri = file_get_contents("https://foursquare.com/oauth2/access_token?client_id=".$client_id."&client_secret=".$client_secret."&grant_type=authorization_code&redirect_uri=".$redirect_uri."&code=".$key, true);
 
-
+	var_dump($uri) ;
 	$obj = json_decode($uri);
 
 	$usertoken = $obj->access_token; 
