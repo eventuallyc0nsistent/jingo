@@ -2,7 +2,6 @@
 <?php
 
 	$key = $_GET['code'];
-	echo $key;
 
 	$client_id ="5LENUVBOHJTM5EHQT11GZZYZVVWSRLIIL1WGSRBRF0RMXN2I";
 	$client_secret = "BMGDMIILOH5FHOEY0UHYB2T2CQY1CRNYPQCCSF2ZCXYGG1CS";
@@ -10,7 +9,7 @@
 
 	$uri = file_get_contents("https://foursquare.com/oauth2/access_token?client_id=".$client_id."&client_secret=".$client_secret."&grant_type=authorization_code&redirect_uri=".$redirect_uri."&code=".$key, 
 	    true);
-
+	echo $uri;
 	$obj = json_decode($uri);
 
 	$usertoken = $obj->access_token; 
@@ -40,7 +39,7 @@
 		else 	
 	    	$email="";
 
-	echo "Hello" ;
+	
 	echo $foursquareid ;
 	echo $firstname ;
 	echo $lastname ;
