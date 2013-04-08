@@ -4,7 +4,7 @@
 
 $clientId ="5LENUVBOHJTM5EHQT11GZZYZVVWSRLIIL1WGSRBRF0RMXN2I";
 $clientSecret = "BMGDMIILOH5FHOEY0UHYB2T2CQY1CRNYPQCCSF2ZCXYGG1CS";
-$redirectUrl ="http://localhost/jingo/callback.php";
+$redirectUrl ="https://jingo.herokuapp.com/callback.php";
 
 //Include the foursquare-async library:  (Remember, check your paths!)
 
