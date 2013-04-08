@@ -5,6 +5,16 @@
 	<script type="text/javascript" src="include/js/bootstrap.js"></script>
 	<title>Jingo</title>
 
+	<script type="text/javascript">
+		
+		var latitude = position.latitude ;
+		var longitude = position.longitude;
+
+		console.log('latitude');
+		console.log('longitude');
+
+	</script>
+
 </head>
 <body>
 	<div class="container">
