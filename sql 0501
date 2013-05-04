@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2013 at 02:28 PM
+-- Generation Time: May 03, 2013 at 10:37 PM
 -- Server version: 5.5.30
 -- PHP Version: 5.3.15
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `FILTER` (
   KEY `tag` (`tag`),
   KEY `fk1_test` (`uid`),
   KEY `filter_ibfk_2` (`Aname`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `FILTER`
@@ -83,8 +83,7 @@ CREATE TABLE IF NOT EXISTS `FILTER` (
 
 INSERT INTO `FILTER` (`fid`, `uid`, `state`, `Aname`, `tag`, `x`, `y`, `Ftime`) VALUES
 (1, 1, 'study', 'NYU-POLY', 'NYU-POLY', '80.00', '90.89', '2013-04-29 15:09:48'),
-(2, 1, 'study', 'NYU-POLY', 'restaurant', '83.00', '94.89', '2013-04-29 16:20:37'),
-(3, 2, 'None', 'None', 'None', '86.00', '92.00', '2013-05-02 15:09:00');
+(2, 1, 'study', 'NYU-POLY', 'restaurant', '83.00', '94.89', '2013-04-29 16:20:37');
 
 -- --------------------------------------------------------
 
@@ -118,8 +117,8 @@ CREATE TABLE IF NOT EXISTS `NOTE` (
   `y1` decimal(5,2) unsigned NOT NULL,
   `Nlike` int(11) DEFAULT NULL,
   PRIMARY KEY (`nid`),
-  KEY `uid` (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  KEY `note_uid` (`uid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `NOTE`
@@ -172,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `SCHEDULE_DATE` (
   `repeatday` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') DEFAULT NULL,
   PRIMARY KEY (`scid`),
   KEY `schedule_date_ibfk_1` (`nid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `SCHEDULE_DATE`
@@ -198,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `SCHEDULE_USER` (
   `repeatday` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') DEFAULT NULL,
   PRIMARY KEY (`stid`),
   KEY `fk_test` (`fid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `SCHEDULE_USER`
@@ -208,8 +207,7 @@ INSERT INTO `SCHEDULE_USER` (`stid`, `fid`, `timefrom`, `timeto`, `repeatday`) V
 (1, 1, '10:00:00', '18:00:00', 'Monday'),
 (2, 1, '10:00:00', '24:00:00', 'Tuesday'),
 (3, 2, '10:00:00', '18:00:00', 'Monday'),
-(4, 2, '10:00:00', '24:00:00', 'Tuesday'),
-(5, 3, '00:00:00', '24:00:00', NULL);
+(4, 2, '10:00:00', '24:00:00', 'Tuesday');
 
 -- --------------------------------------------------------
 
@@ -240,15 +238,14 @@ CREATE TABLE IF NOT EXISTS `USER` (
   `email` varchar(100) NOT NULL,
   `password` varchar(10) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `USER`
 --
 
 INSERT INTO `USER` (`uid`, `firstname`, `lastname`, `email`, `password`) VALUES
-(1, 'jiani', 'yao', 'yaojiani77@gmail.com', '123456'),
-(2, 'kiran', 'koduru', 'kiran@example.com', '654321');
+(1, 'jiani', 'yao', 'yaojiani77@gmail.com', '123456');
 
 --
 -- Constraints for dumped tables
@@ -264,7 +261,6 @@ ALTER TABLE `COMMENT`
 -- Constraints for table `FILTER`
 --
 ALTER TABLE `FILTER`
-  ADD CONSTRAINT `filter_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `USER` (`uid`),
   ADD CONSTRAINT `filter_ibfk_2` FOREIGN KEY (`Aname`) REFERENCES `ADDRESS` (`Aname`),
   ADD CONSTRAINT `filter_ibfk_3` FOREIGN KEY (`tag`) REFERENCES `NOTE_TAG` (`tag`),
   ADD CONSTRAINT `fk1_test` FOREIGN KEY (`uid`) REFERENCES `USER` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -280,7 +276,7 @@ ALTER TABLE `FRIENDSHIP`
 -- Constraints for table `NOTE`
 --
 ALTER TABLE `NOTE`
-  ADD CONSTRAINT `note_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `USER` (`uid`);
+  ADD CONSTRAINT `note_uid` FOREIGN KEY (`uid`) REFERENCES `USER` (`uid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `NOTE_TAG`
