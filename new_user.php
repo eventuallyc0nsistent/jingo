@@ -22,7 +22,5 @@ if($_POST) {
 
 }
 
-
-
 require_once('footer.php');
 ?>
