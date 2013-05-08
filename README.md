@@ -24,3 +24,21 @@
   e.g. Carol wants to receive #food updates during lunchtime, from friends.
 + When you check-in somewhere you should get updates on hashtags subscribed to. Or show available hashtags.
 + Set status message of user during the time interval set by them.
+
+
+#How the code works ?
+
+###Include files
+
++header.php
+Include scripts , css , twitter bootstrap and others
+
+###Signup and Login
+
++ create_new_user.php
+Page with signup and login form
+
+###User Homepage
+
++ userhome.php
+Home page for the user
