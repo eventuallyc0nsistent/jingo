@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2013 at 02:45 PM
+-- Generation Time: May 02, 2013 at 02:28 PM
 -- Server version: 5.5.30
 -- PHP Version: 5.3.15
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `ADDRESS` (
   `Aname` varchar(100) NOT NULL,
-  `x` decimal(4,2) unsigned NOT NULL,
-  `y` decimal(4,2) unsigned NOT NULL,
-  `x1` decimal(4,2) unsigned NOT NULL,
-  `y1` decimal(4,2) unsigned NOT NULL,
+  `x` decimal(5,2) unsigned NOT NULL,
+  `y` decimal(5,2) unsigned NOT NULL,
+  `x1` decimal(5,2) unsigned NOT NULL,
+  `y1` decimal(5,2) unsigned NOT NULL,
   PRIMARY KEY (`Aname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `ADDRESS` (
 --
 
 INSERT INTO `ADDRESS` (`Aname`, `x`, `y`, `x1`, `y1`) VALUES
+('None', '0.00', '0.00', '999.99', '999.99'),
 ('NYU-POLY', '70.00', '80.00', '91.00', '96.00');
 
 -- --------------------------------------------------------
@@ -67,14 +68,14 @@ CREATE TABLE IF NOT EXISTS `FILTER` (
   `state` varchar(50) DEFAULT NULL,
   `Aname` varchar(100) DEFAULT NULL,
   `tag` varchar(50) DEFAULT NULL,
-  `x` decimal(4,2) unsigned DEFAULT NULL,
-  `y` decimal(4,2) unsigned DEFAULT NULL,
+  `x` decimal(5,2) unsigned DEFAULT NULL,
+  `y` decimal(5,2) unsigned DEFAULT NULL,
   `Ftime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`fid`),
   KEY `tag` (`tag`),
   KEY `fk1_test` (`uid`),
   KEY `filter_ibfk_2` (`Aname`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `FILTER`
@@ -82,7 +83,8 @@ CREATE TABLE IF NOT EXISTS `FILTER` (
 
 INSERT INTO `FILTER` (`fid`, `uid`, `state`, `Aname`, `tag`, `x`, `y`, `Ftime`) VALUES
 (1, 1, 'study', 'NYU-POLY', 'NYU-POLY', '80.00', '90.89', '2013-04-29 15:09:48'),
-(2, 1, 'study', 'NYU-POLY', 'restaurant', '83.00', '94.89', '2013-04-29 16:20:37');
+(2, 1, 'study', 'NYU-POLY', 'restaurant', '83.00', '94.89', '2013-04-29 16:20:37'),
+(3, 2, 'None', 'None', 'None', '86.00', '92.00', '2013-05-02 15:09:00');
 
 -- --------------------------------------------------------
 
@@ -110,10 +112,10 @@ CREATE TABLE IF NOT EXISTS `NOTE` (
   `notetext` varchar(500) DEFAULT NULL,
   `hyperlink` varchar(100) DEFAULT NULL,
   `Utime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `x` decimal(4,2) unsigned NOT NULL,
-  `y` decimal(4,2) unsigned NOT NULL,
-  `x1` decimal(4,2) unsigned NOT NULL,
-  `y1` decimal(4,2) unsigned NOT NULL,
+  `x` decimal(5,2) unsigned NOT NULL,
+  `y` decimal(5,2) unsigned NOT NULL,
+  `x1` decimal(5,2) unsigned NOT NULL,
+  `y1` decimal(5,2) unsigned NOT NULL,
   `Nlike` int(11) DEFAULT NULL,
   PRIMARY KEY (`nid`),
   KEY `uid` (`uid`)
@@ -149,6 +151,8 @@ CREATE TABLE IF NOT EXISTS `NOTE_TAG` (
 
 INSERT INTO `NOTE_TAG` (`nid`, `tag`) VALUES
 (1, 'education'),
+(1, 'None'),
+(2, 'None'),
 (1, 'NYU-POLY'),
 (2, 'restaurant');
 
@@ -165,17 +169,20 @@ CREATE TABLE IF NOT EXISTS `SCHEDULE_DATE` (
   `timeto` time DEFAULT NULL,
   `datefrom` date DEFAULT NULL,
   `dateto` date DEFAULT NULL,
-  `repeatday` enum('None','Mon','Tue','Wed','Thu','Fri','Sat','Sun') DEFAULT NULL,
+  `repeatday` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') DEFAULT NULL,
   PRIMARY KEY (`scid`),
   KEY `schedule_date_ibfk_1` (`nid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `SCHEDULE_DATE`
 --
 
 INSERT INTO `SCHEDULE_DATE` (`scid`, `nid`, `timefrom`, `timeto`, `datefrom`, `dateto`, `repeatday`) VALUES
-(1, 1, '10:00:00', '13:00:00', '2013-04-28', '2013-05-31', 'None');
+(1, 1, '10:00:00', '13:00:00', '2013-04-28', '2013-05-31', 'Monday'),
+(2, 1, '10:00:00', '24:00:00', '2013-04-28', '2013-05-31', 'Tuesday'),
+(3, 1, '10:00:00', '14:00:00', '2013-04-28', '2013-05-31', 'Thursday'),
+(4, 2, '00:00:00', '24:00:00', '2013-04-28', '2014-05-28', NULL);
 
 -- --------------------------------------------------------
 
@@ -188,20 +195,21 @@ CREATE TABLE IF NOT EXISTS `SCHEDULE_USER` (
   `fid` int(10) unsigned NOT NULL,
   `timefrom` time DEFAULT NULL,
   `timeto` time DEFAULT NULL,
-  `repeatday` enum('None','Mon','Tue','Wed','Thu','Fri','Sat','Sun') DEFAULT NULL,
+  `repeatday` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') DEFAULT NULL,
   PRIMARY KEY (`stid`),
   KEY `fk_test` (`fid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `SCHEDULE_USER`
 --
 
 INSERT INTO `SCHEDULE_USER` (`stid`, `fid`, `timefrom`, `timeto`, `repeatday`) VALUES
-(1, 1, '10:00:00', '18:00:00', 'Mon'),
-(2, 1, '10:00:00', '18:00:00', 'Tue'),
-(3, 2, '10:00:00', '18:00:00', 'Mon'),
-(4, 2, '10:00:00', '18:00:00', 'Tue');
+(1, 1, '10:00:00', '18:00:00', 'Monday'),
+(2, 1, '10:00:00', '24:00:00', 'Tuesday'),
+(3, 2, '10:00:00', '18:00:00', 'Monday'),
+(4, 2, '10:00:00', '24:00:00', 'Tuesday'),
+(5, 3, '00:00:00', '24:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -213,8 +221,8 @@ CREATE TABLE IF NOT EXISTS `SCHEDULE_WEEK` (
   `swid` int(11) NOT NULL AUTO_INCREMENT,
   `nid` int(10) unsigned NOT NULL,
   `whichweek` enum('1','2','3','4') DEFAULT NULL,
-  `whichday` enum('Mon','Tue','Wed','Thu','Fri','Sat','Sun') DEFAULT NULL,
-  `repeamonth` enum('None','Jan','Feb','Apr','Mar','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') DEFAULT NULL,
+  `whichday` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') DEFAULT NULL,
+  `repeamonth` enum('Jan','Feb','Apr','Mar','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') DEFAULT NULL,
   PRIMARY KEY (`swid`),
   KEY `schedule_week_ibfk_1` (`nid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -232,14 +240,15 @@ CREATE TABLE IF NOT EXISTS `USER` (
   `email` varchar(100) NOT NULL,
   `password` varchar(10) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `USER`
 --
 
 INSERT INTO `USER` (`uid`, `firstname`, `lastname`, `email`, `password`) VALUES
-(1, 'jiani', 'yao', 'yaojiani77@gmail.com', '123456');
+(1, 'jiani', 'yao', 'yaojiani77@gmail.com', '123456'),
+(2, 'kiran', 'koduru', 'kiran@example.com', '654321');
 
 --
 -- Constraints for dumped tables

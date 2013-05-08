@@ -12,14 +12,18 @@ CREATE TABLE user(
 ) ;
 
 
-CREATE TABLE schedule(
+CREATE TABLE schedule_user(
 
   scid integer(6),
+  fid integer(6),
   datefrom datetime,
   dateto datetime,
   repeatday enum('Mon','Tue','Wed','Thu','Fri','Sat','Sun') DEFAULT NULL,
   repeatmonth enum ('Jan','Feb','Apr','Mar','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec') DEFAULT NULL,
-  primary key(scid)
+  primary key(scid),
+  primary key(fid),
+  INDEX (fid),
+  CONSTRAINT FOREIGN KEY (fid) REFERENCES filter(fid)
 
 ) ;
 
@@ -164,4 +168,49 @@ CREATE TABLE note_holiday(
   CONSTRAINT FOREIGN KEY (nid) REFERENCES note(nid),
   CONSTRAINT FOREIGN KEY (hname) REFERENCES holiday(hname)
 ) ;
+
+
+
+
+
+
+
+
+SELECT n.notetext , n.hyperlink , n.nid
+FROM NOTES n, FILTER f , SCHEDULE_USER su , USER u,
+WHERE u.username = 'Kiran' AND
+      f.state = 'in campus' AND
+      f.timestamp = NOW() AND
+      su.fid = f.fid AND
+      f.x BETWEEN n.x AND n.x1
+      f.y BETWEEN n.y AND n.y1
+
+
+INSERT INTO COMMENT(nid,commenttext, comdate) values (234,'Thanks for the tip',NOW())
+
+
+SELECT uid,firstname,lastname
+FROM NOTE n 
+INNER JOIN FRIENDSHIP fr 
+  ON n.uid=fr.leaderid
+INNER JOIN FILTER f 
+  ON fr.followerid=f.uid
+INNER JOIN SCHEDULE_USER sc 
+  ON sc.fid=f.fid
+INNER JOIN NOTE_TAG nt 
+  ON n.nid = nt.nid
+INNER JOIN USER 
+  ON u.uid = fr.followerid
+WHERE n.nid = 112 
+AND f.x BETWEEN n.x AND n.x1
+AND f.y BETWEEN n.y AND n.y1
+AND f.time BETWEEN sc.timefrom AND sc.timeto ;
+
+
+
+SELECT nid
+FROM note
+WHERE notetext CONTAINS '%fish' AND notetext CONTAINS '%boat%' 
+ORDER BY likes DESC 
+LIMIT 50
 
