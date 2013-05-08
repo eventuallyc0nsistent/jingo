@@ -30,15 +30,12 @@
 
 ###Include files
 
-+ header.php
-Include scripts , css , twitter bootstrap and others
++ __header.php__ : Include scripts , css , twitter bootstrap and others
 
 ###Signup and Login
 
-+ create_new_user.php
-Page with signup and login form
++ __create_new_user.php__ : Page with signup and login form
 
 ###User Homepage
 
-+ userhome.php
-Home page for the user
++ __userhome.php__ : Home page for the user
