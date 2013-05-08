@@ -10,6 +10,11 @@ $(document).ready(function(){
 
 	$("#signup").validate({
 		rules: {
+
+			username : {
+				required : true ,
+				minlength : 2
+			},
 			firstname : {
 					required : true,
 					minlength : 2
@@ -33,6 +38,7 @@ $(document).ready(function(){
 			}
 		},
 		messages: {
+			username : "Minimum length 2 characters long",
 			firstname:"Please enter a First name",
 			lastname:"Please enter a Last name",
 			email:{
