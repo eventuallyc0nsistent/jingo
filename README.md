@@ -30,7 +30,7 @@
 
 ###Include files
 
-+header.php
++ header.php
 Include scripts , css , twitter bootstrap and others
 
 ###Signup and Login
