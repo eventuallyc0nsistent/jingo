@@ -69,12 +69,12 @@
 
 <?php
 
-$database_name = 'jingo';
-$user = 'root';
-$password = 'root' ;
+$database_name = 'jingo2';
+$user = 'yaojiani';
+$password = '66200535' ;
 
 
-$mysqli = new mysqli("localhost", $user, $password, $database_name);
+$mysqli = new mysqli("127.0.0.1", $user, $password, $database_name);
 
 /* check connection */
 if (mysqli_connect_errno()) {
