@@ -10,6 +10,6 @@
 
   </p>
 </div>
-<?php require_once('footer.php') ; ?>
+<?php require_once('footer.php'); echo "hi" ;exit; ?>
 
 

@@ -23,26 +23,28 @@
 
 </head>
 <body>
+
+<?php if($_SESSION['loggedin']) { ?>
 <div class="navbar navbar-inverse">
-	<div class="navbar-inner">
+	<div class="navbar-inner" style="border-radius:0;">
 		<div class="container-fluid">
 			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="#" name="top">Brand Name</a>
+			<a class="brand" href="index.php">Jingo</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
-					<li><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+					<li><a href="userhome.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<li class="active"><a href="#"><i class="icon-file icon-white"></i> Pages</a></li>
+					<li><a href="create_new_user.php"><i class="icon-file icon-white"></i> Login</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-envelope icon-white"></i> Messages</a></li>
 					<li class="divider-vertical"></li>
                   	<li><a href="#"><i class="icon-signal icon-white"></i> Stats</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="#"><i class="icon-lock icon-white"></i> Permissions</a></li>
+					<li><a href="#"><i class="icon-lock icon-white"></i> Profile</a></li>
 					<li class="divider-vertical"></li>
 				</ul>
 				<div class="btn-group pull-right">
@@ -52,7 +54,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="icon-share"></i> Logout</a></li>
+						<li><a href=""><i class="icon-share"></i> Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -63,6 +65,7 @@
 	<!--/.navbar-inner -->
 </div>
 <!--/.navbar -->
+<?php } ?>
 <div class="container">
 
 

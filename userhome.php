@@ -28,7 +28,7 @@ $lastname = $row['lastname'];
 			<span class=" badge badge-warning">8 notes</span> <span class=" badge badge-info">15 followers</span>
 		</div>
 		<div class="span4 mt10">
-		    <form accept-charset="UTF-8" action="" method="POST">
+		    <form accept-charset="UTF-8" action="post_note.php" method="POST">
 		        <textarea class="span3" id="new_message" name="new_message"
 		        placeholder="Type in your message" rows="3"></textarea>
 		        <h6>320 characters remaining</h6>
