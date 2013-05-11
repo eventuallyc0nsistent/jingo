@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<?php  require_once('header.php'); ?>
-=======
 <?php  
 require_once('header.php'); 
 
@@ -19,20 +16,11 @@ $lastname = $row['lastname'];
 ?>
 
 
->>>>>>> b479afad5bf27fd893585cfc9f94990967d74e2e
 
 <div class="span3 well">
 	<div class="row">
 		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span2">
-<<<<<<< HEAD
-			<p>admin</p>
-          	<p><strong>First Last Name</strong></p>
-		</div>
-		<br/>
-		<div class="span3">
-			<span class=" badge badge-warning">8 messages</span> <span class=" badge badge-info">15 followers</span>
-=======
 			<p><a href="#">@<?php echo $username ; ?></a></p>
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>
 		</div>
@@ -46,17 +34,14 @@ $lastname = $row['lastname'];
 		        <h6>320 characters remaining</h6>
 		        <button class="btn btn-info" type="submit">Post Note</button>
 		    </form>
->>>>>>> b479afad5bf27fd893585cfc9f94990967d74e2e
+
 		</div>
 	</div>
 </div>
 
 <div class="span6 well">
 	<h2>Notes</h2>
-<<<<<<< HEAD
-=======
-	<hr>
->>>>>>> b479afad5bf27fd893585cfc9f94990967d74e2e
+
 	<div class="row">
 		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">
