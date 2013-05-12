@@ -123,12 +123,11 @@ function time_ago($tm,$rcs = 0) {
 
 				<!-- div#sch -->
 				<div id="schedule" class="clickid" style="display:none;">
-					<p>Schedule</p>
-				    <div id="datetimepicker3" class="input-append">
-						<label for="timefrom">start time:</label>
-						<input data-format="hh:mm:ss" type="text" name="timefrom_name" value="" maxlength="100" />
+					<div id="datetimepicker3" class="input-append">
+						Start date
+						<input data-format="hh:mm:ss" type="text" class="input-small" name="timefrom_name" value="" maxlength="100" />
 						<span class="add-on">
-					      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+					      <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
 					    </span>
 			  		</div>
 				</div><!-- end div#sch -->

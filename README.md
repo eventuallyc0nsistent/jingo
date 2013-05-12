@@ -39,3 +39,9 @@
 ###User Homepage
 
 + __userhome.php__ : Home page for the user
+Contains information about the notes posted by the user.
+Time when the note was posted in ('x' mins ago format).
+Add inputs like radius for post , tags and schedule for post.
+
++ __login.php__ : Login the user and re-direct him to __userhome.php__
++ __logout.php__ : Ends the user session and logs him out.

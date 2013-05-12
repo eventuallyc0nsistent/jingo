@@ -52,8 +52,10 @@ if (mysqli_connect_errno()) {
 				<ul class="nav">
 					<li><a href="userhome.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
+					<?php if(!$_SESSION['loggedin']) { ?>
 					<li><a href="create_new_user.php"><i class="icon-file icon-white"></i> Login</a></li>
 					<li class="divider-vertical"></li>
+					<?php }?>
 					<li><a href="#"><i class="icon-envelope icon-white"></i> Messages</a></li>
 					<li class="divider-vertical"></li>
                   	<li><a href="#"><i class="icon-signal icon-white"></i> Stats</a></li>
