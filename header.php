@@ -1,4 +1,19 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+$database_name = 'jingo';
+$user = 'root';
+$password = 'root' ;
+
+
+$mysqli = new mysqli("localhost", $user, $password, $database_name);
+
+/* check connection */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +39,6 @@
 </head>
 <body>
 
-<?php if($_SESSION['loggedin']) { ?>
 <div class="navbar navbar-inverse">
 	<div class="navbar-inner" style="border-radius:0;">
 		<div class="container-fluid">
@@ -54,7 +68,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
 						<li class="divider"></li>
-						<li><a href=""><i class="icon-share"></i> Logout</a></li>
+						<li><a href="logout.php"><i class="icon-share"></i> Logout</a></li>
 					</ul>
 				</div>
 			</div>
@@ -65,25 +79,6 @@
 	<!--/.navbar-inner -->
 </div>
 <!--/.navbar -->
-<?php } ?>
+
+
 <div class="container">
-
-
-
-<?php
-
-$database_name = 'jingo';
-$user = 'root';
-$password = 'root' ;
-
-
-$mysqli = new mysqli("localhost", $user, $password, $database_name);
-
-/* check connection */
-if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-}
-
-?>
-

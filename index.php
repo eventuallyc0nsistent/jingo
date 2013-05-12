@@ -1,4 +1,10 @@
-<?php 	require_once('header.php') ; ?>
+<?php
+
+require_once 'header.php' ; 
+
+?>
+<?php if($_SESSION['loggedin']) { ?>
+<!-- index -->
 <div class="hero-unit">
  <h1>Whats our story ?</h1>
  
@@ -10,6 +16,10 @@
 
   </p>
 </div>
-<?php require_once('footer.php'); echo "hi" ;exit; ?>
+<?php } else { 
 
+	header('Location:create_new_user.php') ;
 
+} ?>
+
+<?php require_once('footer.php'); ?>

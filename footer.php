@@ -1,13 +1,28 @@
+
 </div> <!-- close div.container -->
-<?php
-echo "----------------------------------------hello footer----------------------------------------";
-	mysql_close(); // close db connectivity
 
-?>
-
+<?php mysql_close(); // close db connectivity ?>
 <script type="text/javascript">
 
 $(document).ready(function(){
+
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(success, error);
+	} else {
+		alert('Browser not compatible with HTML5');
+	}
+
+	// when successfully get the position of the user
+	function success(position){
+		var	lat = position.coords.latitude;
+		var long = position.coords.longitude;
+	}
+
+	// ALERT error message when you can getCurrentPositon of user
+	function error(msg){
+		alert(msg);
+	}
+
 
 	$("#signup").validate({
 		rules: {
@@ -60,6 +75,8 @@ $(document).ready(function(){
 });
 
 </script>
-<?php } // close else from header.php?>
+
 </body>
+
 </html>
+
