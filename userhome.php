@@ -2,8 +2,6 @@
 
 require_once 'header.php' ; 
 
-$username = $_SESSION['username'];
-
 $query = "SELECT * FROM USER WHERE username = '".$username."'";
 $result = $mysqli->query($query);
 
@@ -24,7 +22,7 @@ $row3 = $result->fetch_array();
 if($_POST) {
 	//print_r($_POST);
 	
-	$note = $_POST['note'];
+	$note = addslashes($_POST['note']);
 
 	$range = $_POST['radius'];
 
@@ -39,7 +37,7 @@ if($_POST) {
 	
 	// insert note in DB
 	$query = "INSERT INTO NOTE (uid,notetext,x,y,radius,hyperlink)  VALUES ('".$uid."','".$note."',80.00,85.00,'".$radius."','".$tag_name.",".$tag_name2.",".$tag_name3."');";
-	echo $query;
+	//echo $query;
 	$mysqli->query($query) or die(mysql_errno());
 
 }
@@ -150,9 +148,9 @@ function time_ago($tm,$rcs = 0) {
 		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">
 			<p><?php echo $firstname.' '.$lastname ; ?> <a href="#">@<?php echo $username ; ?></a> 
-			<span class="pull-right"><?php echo time_ago(strtotime($row['Utime']));?></span>
+			<span class="pull-right"><small><?php echo time_ago(strtotime($row['Utime']));?></small></span>
 			</p>
-          	<p><?php echo $row['notetext'] ; ?></p>
+          	<p><?php echo stripslashes($row['notetext']) ; ?></p>
           	<p>
           		<?php 
           			$tags = explode(',', $row['hyperlink']);

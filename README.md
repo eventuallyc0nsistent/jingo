@@ -45,3 +45,8 @@ Add inputs like radius for post , tags and schedule for post.
 
 + __login.php__ : Login the user and re-direct him to __userhome.php__
 + __logout.php__ : Ends the user session and logs him out.
+
+#Parts remaining 
++ Sending friend requests.
++ Adding schedule for notes.
++ Filtering or user settings page.

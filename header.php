@@ -39,6 +39,13 @@ if (mysqli_connect_errno()) {
 </head>
 <body>
 
+<?php 
+
+if($_SESSION['loggedin']) { 
+
+	$username = $_SESSION['username'];
+
+?>
 <div class="navbar navbar-inverse">
 	<div class="navbar-inner" style="border-radius:0;">
 		<div class="container-fluid">
@@ -52,10 +59,6 @@ if (mysqli_connect_errno()) {
 				<ul class="nav">
 					<li><a href="userhome.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<?php if(!$_SESSION['loggedin']) { ?>
-					<li><a href="create_new_user.php"><i class="icon-file icon-white"></i> Login</a></li>
-					<li class="divider-vertical"></li>
-					<?php }?>
 					<li><a href="#"><i class="icon-envelope icon-white"></i> Messages</a></li>
 					<li class="divider-vertical"></li>
                   	<li><a href="#"><i class="icon-signal icon-white"></i> Stats</a></li>
@@ -64,11 +67,14 @@ if (mysqli_connect_errno()) {
 					<li class="divider-vertical"></li>
 				</ul>
 				<div class="btn-group pull-right">
+					<form style="margin:0" class="form-search pull-left" action="find_user.php" id="find-user" method="POST">
+						<div class="input-append" style="margin:0 15px"><input type="text" id="" name="find-user"><span class="add-on"><i class="icon-search"></i></span></div>
+					</form>
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i> admin	<span class="caret"></span>
+						<i class="icon-user"></i><?php echo $username ; ?><span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+						<li><a href="user_settings.php"><i class="icon-wrench"></i> Settings</a></li>
 						<li class="divider"></li>
 						<li><a href="logout.php"><i class="icon-share"></i> Logout</a></li>
 					</ul>
@@ -81,6 +87,6 @@ if (mysqli_connect_errno()) {
 	<!--/.navbar-inner -->
 </div>
 <!--/.navbar -->
-
+<?php } ?>
 
 <div class="container">

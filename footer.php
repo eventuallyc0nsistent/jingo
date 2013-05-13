@@ -6,6 +6,7 @@
 
 $(document).ready(function(){
 
+	// checkif the browser has geolocation or HTML5
 	if(navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(success, error);
 	} else {
@@ -23,7 +24,34 @@ $(document).ready(function(){
 		alert(msg);
 	}
 
+	// submit find-user form on ENTER key
+	$("#find-user input").keydown(function(e){
+		if(e.keydown==13) {
+			event.preventDefault();
+			$("#find-user.php").submit();
+		}
+	});
 
+	//add a friend 
+	$('.add-friend').click(function(){
+
+		var leaderid = $(this).attr('name');
+
+		console.log(followerid);
+		console.log(leaderid);
+		$.ajax({
+			url : "add_friend.php",
+			type : "POST" ,
+			data : "leaderid="+leaderid+"&followerid="+followerid+"&status="+status,
+			success : function () {
+				window.location.reload(true);
+			}
+
+		});
+
+	});
+
+	// validating using jQuery plugin for form validation
 	$("#signup").validate({
 		rules: {
 
