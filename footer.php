@@ -50,7 +50,7 @@ $(document).ready(function(){
 		});
 
 	});
-
+	
 	// validating using jQuery plugin for form validation
 	$("#signup").validate({
 		rules: {

@@ -19,12 +19,11 @@ $row3 = $result->fetch_array();
 $followerid = $uid ; 
 $status = 2 ; // hard value if sending friend request set status to 2
 
-// $find_user
+// $find_user who still doesn't have a friend request sent and is in the USER table
 $find_user = $_POST['find-user'];
-$query = "SELECT U.uid,U.username,U.firstname,U.lastname FROM USER U,FRIENDSHIP F WHERE U.username LIKE '%".$find_user."%' AND F.followeruid ='".$uid."' AND F.status !='".$status."'";
-echo $query;
+$query = "SELECT U.uid,U.username,U.firstname,U.lastname FROM USER U WHERE U.username LIKE '%".$find_user."%' AND U.uid NOT IN ( SELECT leaderuid FROM FRIENDSHIP WHERE status = '".$status."') AND U.uid != '".$uid."'";
+// echo $query;
 $result2 = $mysqli->query($query);
-
 
 ?>
 
@@ -51,7 +50,7 @@ $result2 = $mysqli->query($query);
 
 
 
-	<?php while( $row = $result2->fetch_array(MYSQLI_ASSOC))  { ?>
+	<?php if($result2->num_rows >= 1 ) { while( $row = $result2->fetch_array(MYSQLI_ASSOC))  { ?>
 	
 	<div class="row">
 		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
@@ -63,7 +62,7 @@ $result2 = $mysqli->query($query);
 		</div>
 	</div>
 	<hr>
-	<?php } ?>
+	<?php } } else { echo "<h6> Sorry no matches founds ! Try a different query or you're friends already</h6>" ;}?>
 </div>
 
 <!-- set variables to send via ajax add_friend() -->

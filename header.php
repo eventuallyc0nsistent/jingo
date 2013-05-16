@@ -25,7 +25,7 @@ if (mysqli_connect_errno()) {
 
 	<script type="text/javascript" src="include/js/geolocate.js"></script>
 	<script type="text/javascript" src="include/js/jquery.form.js"></script>
-	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
 
 
 	<title>Jingo</title>
@@ -74,7 +74,7 @@ if($_SESSION['loggedin']) {
 						<i class="icon-user"></i><?php echo $username ; ?><span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="user_settings.php"><i class="icon-wrench"></i> Settings</a></li>
+						<li><a href="settings.php"><i class="icon-wrench"></i> Settings</a></li>
 						<li class="divider"></li>
 						<li><a href="logout.php"><i class="icon-share"></i> Logout</a></li>
 					</ul>
