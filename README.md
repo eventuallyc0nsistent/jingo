@@ -57,23 +57,23 @@ Add inputs like radius for post , tags and schedule for post.
 + Finding nearby places : Using Google Places API
 
 
-#List to complete  [DONE]
+#List to complete 
 + Register  [DONE]
 + Login / Logout  [DONE]
 + Post Note [DONE]
 
-+ Location [Needs to be merged]
-+ Schedule [Needs to be merged]
-+ Filter [Needs to be merged]
-+ Friendship [Friend Request being sent, need to work on displaying in list]
++ Location [Needs to be merged] --- 1 hr , 2 hrs -- 1.5
++ Schedule [Needs to be merged] --- 1 hr , 1 hr  -- 1 
++ Filter [Needs to be merged] --- 1 hr , 1 hr -- 1
++ Friendship [Friend Request being sent, need to work on displaying in list] --- 2 hrs , 3 hrs -- 2.5
 
-+ Comments [TO DO]
-+ Search [Searching Friends, Notes, Tags, Everything !]
++ Comments [TO DO] --- Use Jiani's code if you can't do it ---- 2 hrs , 2 hrs -- 2
++ Search [Searching Friends, Notes, Tags, Everything !] ---- 5 hrs , 5 hrs -- 5
 + Like [TO DO]  -------------- EXTRA CREDIT
 + Bookmark Notes [TO DO]  -------------- EXTRA CREDIT
 + Model Area [need to ask TA]  -------------- EXTRA CREDIT
 + Recommend Tags [TO DO]  -------------- EXTRA CREDIT
 
 + Improvement [need to ask TA]
-+ documentation [Pretty much documented code]
-+ UI and Overall [Works ok until now. Can add suggestions here]
++ documentation [Pretty much documented code] -- being taken care of already
++ UI and Overall [Works ok until now. Can add suggestions here] -- Pretty good
