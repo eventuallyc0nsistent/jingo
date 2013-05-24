@@ -17,11 +17,14 @@ $row3 = $result->fetch_array();
 
 // add friend 
 $followerid = $uid ; 
-$status = 2 ; // hard value if sending friend request set status to 2
+// $status = 2 ; // hard value if sending friend request set status to 2
 
 // $find_user who still doesn't have a friend request sent and is in the USER table
 $find_user = $_POST['find-user'];
-$query = "SELECT U.uid,U.username,U.firstname,U.lastname FROM USER U WHERE U.username LIKE '%".$find_user."%' AND U.uid NOT IN ( SELECT leaderuid FROM FRIENDSHIP WHERE status = '".$status."') AND U.uid != '".$uid."'";
+
+$query = "SELECT U.uid,U.username,U.firstname,U.lastname, F.status FROM USER U, FRIENDSHIP F WHERE U.username LIKE '%".$find_user."%' AND F.leaderuid = U.uid ";
+
+//$query = "SELECT U.uid,U.username,U.firstname,U.lastname FROM USER U WHERE U.username LIKE '%".$find_user."%' AND U.uid NOT IN ( SELECT leaderuid FROM FRIENDSHIP WHERE status = '".$status."') AND U.uid != '".$uid."'";
 // echo $query;
 $result2 = $mysqli->query($query);
 
@@ -39,8 +42,11 @@ $result2 = $mysqli->query($query);
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>
 		</div>
 		<div class="span3 mt10">
-			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span> <span class=" badge badge-info">15 followers</span>
+			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span>
+			<span class=" badge badge-info">15 followers</span>
+			<a href="set_filters.php"><span class="badge badge-inverse">Settings</span></a>
 		</div>
+		
 		
 	</div>
 </div>
@@ -57,7 +63,13 @@ $result2 = $mysqli->query($query);
 		<div class="span5">
 			<p><?php echo $row['firstname'].' '.$row['lastname'] ; ?> <a href="#">@<?php echo $row['username'] ; ?></a> </p>
 			<p>
+				<?php if ($row['status'] == 2) { ?>
+				<a class="btn" name="<?php echo $row['uid'] ; ?>">Friend Request Sent</a>
+				<?php } elseif($row['status'] == 1) { ?>
 				<a class="btn add-friend" name="<?php echo $row['uid'] ; ?>">Add Friend</a>
+				<?php } else { ?>
+				<a class="btn add-friend" name="<?php echo $row['uid'] ; ?>">Add Friend</a>
+				<?php } ?>
 			</p>
 		</div>
 	</div>

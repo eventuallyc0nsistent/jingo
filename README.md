@@ -46,7 +46,34 @@ Add inputs like radius for post , tags and schedule for post.
 + __login.php__ : Login the user and re-direct him to __userhome.php__
 + __logout.php__ : Ends the user session and logs him out.
 
+###User Settings
+
++__settings.php___ : User can edit his old settings
+
 #Parts remaining 
 + Sending friend requests.
 + Adding schedule for notes.
 + Filtering or user settings page.
++ Finding nearby places : Using Google Places API
+
+
+#List to complete  [DONE]
++ Register  [DONE]
++ Login / Logout  [DONE]
++ Post Note [DONE]
+
++ Location [Needs to be merged]
++ Schedule [Needs to be merged]
++ Filter [Needs to be merged]
++ Friendship [Friend Request being sent, need to work on displaying in list]
+
++ Comments [TO DO]
++ Search [Searching Friends, Notes, Tags, Everything !]
++ Like [TO DO]  -------------- EXTRA CREDIT
++ Bookmark Notes [TO DO]  -------------- EXTRA CREDIT
++ Model Area [need to ask TA]  -------------- EXTRA CREDIT
++ Recommend Tags [TO DO]  -------------- EXTRA CREDIT
+
++ Improvement [need to ask TA]
++ documentation [Pretty much documented code]
++ UI and Overall [Works ok until now. Can add suggestions here]

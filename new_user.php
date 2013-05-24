@@ -14,7 +14,7 @@ if($_POST) {
 	
 	// query to add to DB
 	$query = "INSERT INTO  USER ( firstname  , lastname  , email  , password , username ) VALUES ( '".$firstname."',  '".$lastname."', '". $email."', '".$password."','".$username."');" ;
-	echo $query ;
+	//echo $query ;
 	$result = $mysqli->query($query) or die(mysql_errno());
 	if($result)
 			{ 
