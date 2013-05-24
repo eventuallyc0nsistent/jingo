@@ -28,6 +28,8 @@ function showPosition(position)
   var log=position.coords.longitude;
   document.getElementById("lat").value=lat;
   document.getElementById("log").value=log;
+  document.getElementById("lat2").value=lat;
+  document.getElementById("log2").value=log;
  
  }
   

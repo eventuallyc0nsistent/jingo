@@ -9,6 +9,7 @@ $result = $mysqli->query($query);
 
 if($result->num_rows == 1){
 	$_SESSION['username'] = $username;
+	$_SESSION['loggedin'] = true;
 	header('Location: userhome.php') ;
 
 } else {

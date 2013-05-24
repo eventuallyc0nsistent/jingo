@@ -19,6 +19,7 @@ echo $row['uid'] ;
 <script>
 $(document).ready(function(){
 
+<<<<<<< HEAD
    $("#com").click(function(){
       $("#HCB_comment_box").toggle(500);
     });
@@ -33,6 +34,8 @@ $(document).ready(function(){
     });
  });
 </script>
+=======
+>>>>>>> e8aff4e199e0c7fe612dff1b4ba9b1980669b754
 
 <div class="span3 well">
 	<div class="row">
@@ -45,18 +48,26 @@ $(document).ready(function(){
 			<span class=" badge badge-warning">8 notes</span> <span class=" badge badge-info">15 followers</span>
 		</div>
 		<div class="span4 mt10">
-		    <form accept-charset="UTF-8" action="" method="POST">
+		    <form accept-charset="UTF-8" action="post_note.php" method="POST">
 		        <textarea class="span3" id="new_message" name="new_message"
 		        placeholder="Type in your message" rows="3"></textarea>
 		        <h6>320 characters remaining</h6>
 		        <button class="btn btn-info" type="submit">Post Note</button>
 		    </form>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8aff4e199e0c7fe612dff1b4ba9b1980669b754
 		</div>
 	</div>
 </div>
 
 <div class="span6 well">
 	<h2>Notes</h2>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e8aff4e199e0c7fe612dff1b4ba9b1980669b754
 	<div class="row">
 		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">

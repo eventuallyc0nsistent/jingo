@@ -1,9 +1,10 @@
+</div> <!-- close div.container -->
 <?php
-
+echo "----------------------------------------hello footer----------------------------------------";
 	mysql_close(); // close db connectivity
 
 ?>
-	</div>
+
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -59,5 +60,6 @@ $(document).ready(function(){
 });
 
 </script>
+<?php } // close else from header.php?>
 </body>
 </html>
