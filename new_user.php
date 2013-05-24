@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once('header.php');
 
 if($_POST) {
@@ -8,16 +7,14 @@ if($_POST) {
 	$lastname   = $_POST['lastname'];
 	$email		= $_POST['email'];
 	$password	= md5($_POST['signup_password']);
-	$username	= $_POST['username'];	
 
-	$_SESSION['username'] = $username ;
-	
 	// query to add to DB
+
 	$query = "INSERT INTO  USER ( firstname  , lastname  , email  , password , username ) VALUES ( '".$firstname."',  '".$lastname."', '". $email."', '".$password."','".$username."');" ;
 	//echo $query ;
 	$result = $mysqli->query($query) or die(mysql_errno());
 	if($result)
-			{ 
+			{
 				// Once the user is added re-direct him to userhome.php
 				header("Location: userhome.php");
 			}

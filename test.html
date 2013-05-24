@@ -1,0 +1,44 @@
+<html>
+<head>
+
+	
+</head>
+<body>
+
+
+<script type="text/javascript">
+	function myFunction()
+{
+var btn=document.createElement("BUTTON");
+var t=document.createTextNode("CLICK ME");
+btn.appendChild(t);
+document.body.appendChild(btn);
+};
+</script>
+
+<script type="text/javascript">
+	function test () {
+		// body...
+	
+	   // var a=getElementById(#1);
+		var comm=document.getElementById("com").value ;
+		var t=document.createElement("p")
+		//var b=document.createTextNode(comm);
+		//t.appendChild(b);
+		//b.type="text";
+		t.innerHTML=comm;
+		//var t=document.createTextNode("CLICK ME");
+        //b.appendChild(t);
+		document.body.appendChild(t);
+	};
+	</script>
+	<textarea id="com" rows="5" cols="40" name="notes"></textarea>
+	<input id="1" type="button" value="submit" onclick="test()" >
+
+
+	
+	
+	
+	
+</body>
+</html>
