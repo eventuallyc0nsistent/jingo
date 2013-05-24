@@ -1,8 +1,16 @@
-<?php 	require_once('header.php') ; ?>
+<?php
+
+require_once 'header.php' ; 
+
+?>
+
+<!-- index -->
 <div class="hero-unit">
  <h1>Whats our story ?</h1>
  
-  <p>Suppose you discover a nice restaurant (by finding it on the web or by walking by it) and you think your friends might like this place. Or you find a nice pair of shoes in a shop window. It would be useful if you could post a note about this place, such that your friends (or maybe everybody) receive the note if they come within 300 yards of this place. Or maybe only if they come within 300 yards during lunch time.</p>
+  <p>
+  	Suppose you discover a nice restaurant (by finding it on the web or by walking by it) and you think your friends might like this place. Or you find a nice pair of shoes in a shop window. It would be useful if you could post a note about this place, such that your friends (or maybe everybody) receive the note if they come within 300 yards of this place. Or maybe only if they come within 300 yards during lunch time. Create an <a href="create_new_user.php">account</a> today!
+  </p>
   <p>
    
 	 <div id="mapholder"></div><br/>
@@ -10,6 +18,6 @@
 
   </p>
 </div>
-<?php require_once('footer.php'); echo "hi" ;exit; ?>
 
 
+<?php require_once('footer.php'); ?>
