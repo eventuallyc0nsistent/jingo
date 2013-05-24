@@ -10,11 +10,7 @@ $row = $result->fetch_array();
 
 $firstname = $row['firstname'];
 $lastname = $row['lastname'];
-<<<<<<< HEAD
-echo $row['uid'] ;
-=======
 $uid = $row['uid'];
->>>>>>> a55236083cbe77ae56606b8f1f488295e089b49d
 
 // get the count of notes from the user with uid
 $query3 = "SELECT COUNT(nid) AS ncount FROM NOTE WHERE uid='".$uid."'";
@@ -22,10 +18,6 @@ $result=$mysqli->query($query3);
 $row3 = $result->fetch_array();
 
 
-<<<<<<< HEAD
-<script>
-$(document).ready(function(){
-=======
 // when submitting the note through the same page
 if($_POST) {
 	//print_r($_POST);
@@ -60,25 +52,8 @@ $result2 = $mysqli->query($query2) or die(mysql_errno());
 // $hyperlink = $row2['hyperlink'];
 // $note_time = $row2['Utime'];
 // $likes = $row2['Nlike'];
->>>>>>> a55236083cbe77ae56606b8f1f488295e089b49d
 
-<<<<<<< HEAD
-   $("#com").click(function(){
-      $("#HCB_comment_box").toggle(500);
-    });
- });
-</script>
 
-<script>
-$(document).ready(function(){
-
-   $("#com2").click(function(){
-      $("#HCB_comment_box2").toggle(500);
-    });
- });
-</script>
-=======
->>>>>>> e8aff4e199e0c7fe612dff1b4ba9b1980669b754
 
 /*-- 
 function : time_ago 
@@ -158,27 +133,16 @@ function time_ago($tm,$rcs = 0) {
 				 </div><!-- end div.span3-->
 			  <button class="btn btn-success" type="submit">Post Note</button>
 		    </form>
-<<<<<<< HEAD
-=======
-
->>>>>>> e8aff4e199e0c7fe612dff1b4ba9b1980669b754
 		</div>
 	</div>
 </div>
 
 <div class="span6 well">
 	<h2>Notes</h2>
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
->>>>>>> e8aff4e199e0c7fe612dff1b4ba9b1980669b754
-=======
 
 
 	<?php while( $row = $result2->fetch_array(MYSQLI_ASSOC))  { ?>
 	
->>>>>>> a55236083cbe77ae56606b8f1f488295e089b49d
 	<div class="row">
 		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">
@@ -195,13 +159,8 @@ function time_ago($tm,$rcs = 0) {
           		?>
           	</p>
           	<div>
-<<<<<<< HEAD
           		<a href="#"><span class="icon-heart"></span> Like</a>
           		<a id="com" href="#"><span class="icon-comment"></span> Comment</a>
-=======
-          		<a href="#"><span class="icon-heart"></span><?php if($row['likes']) {echo $row['likes'] ;} else { echo '0' ; }; ?></a>
-          		<a href="#"><span class="icon-comment"></span> Comment</a>
->>>>>>> a55236083cbe77ae56606b8f1f488295e089b49d
 			</div>
 			<!-- begin htmlcommentbox.com -->
  <div style="display:none" id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
@@ -219,7 +178,6 @@ function time_ago($tm,$rcs = 0) {
 		</div>
 	</div>
 	<hr>
-<<<<<<< HEAD
 	<div class="row">
 		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">
@@ -229,17 +187,10 @@ function time_ago($tm,$rcs = 0) {
           		<a href="#"><span class="icon-heart"></span> Like</a>
           		<a id="com2" href="#"><span class="icon-comment"></span> Comment</a>
 			</div>
-			<!-- begin htmlcommentbox.com -->
-<!-- begin htmlcommentbox.com -->
- <div style="display:none" id="HCB_comment_box2"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
- <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
- <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=(""+window.location || hcb_user.PAGE), h="//www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&opts=16862&num=10");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
-<!-- end htmlcommentbox.com -->
+			
 		</div>
 	</div>
-=======
 	<?php } ?>
->>>>>>> a55236083cbe77ae56606b8f1f488295e089b49d
 </div>
 
 <?php } else { 
@@ -247,6 +198,20 @@ function time_ago($tm,$rcs = 0) {
 	header('Location:create_new_user.php') ; 
 
 } ?>
+
+<script>
+$(document).ready(function(){
+
+   $("#com2").click(function(){
+      $("#HCB_comment_box2").toggle(500);
+    });
+ });
+   $("#com").click(function(){
+      $("#HCB_comment_box").toggle(500);
+    });
+ });
+
+</script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -258,9 +223,5 @@ $(document).ready(function(){
 
 });
 
-<<<<<<< HEAD
-
-=======
 </script>
->>>>>>> a55236083cbe77ae56606b8f1f488295e089b49d
 <?php require_once('footer.php'); ?>
