@@ -148,6 +148,16 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#com").click(function(){
+      $("#HCB_comment_box").toggle(500);
+    });
+
+   $("#com2").click(function(){
+      $("#HCB_comment_box2").toggle(500);
+    });
+
+	
+
 });
 
 </script>

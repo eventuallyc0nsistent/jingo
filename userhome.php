@@ -10,6 +10,8 @@ $row = $result->fetch_array();
 
 $firstname = $row['firstname'];
 $lastname = $row['lastname'];
+
+
 $uid = $row['uid'];
 
 // get the count of notes from the user with uid
@@ -52,8 +54,6 @@ $result2 = $mysqli->query($query2) or die(mysql_errno());
 // $hyperlink = $row2['hyperlink'];
 // $note_time = $row2['Utime'];
 // $likes = $row2['Nlike'];
-
-
 
 /*-- 
 function : time_ago 
@@ -143,8 +143,12 @@ function time_ago($tm,$rcs = 0) {
 
 	<?php while( $row = $result2->fetch_array(MYSQLI_ASSOC))  { ?>
 	
-	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+<div class="row">
+		<div class="span1">
+			<a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail">
+				<img src="http://critterapp.pagodabox.com/img/user.jpg" alt="">
+			</a>
+		</div>
 		<div class="span5">
 			<p><?php echo $firstname.' '.$lastname ; ?> <a href="#">@<?php echo $username ; ?></a> 
 			<span class="pull-right"><small><?php echo time_ago(strtotime($row['Utime']));?></small></span>
@@ -162,36 +166,27 @@ function time_ago($tm,$rcs = 0) {
           		<a href="#"><span class="icon-heart"></span> Like</a>
           		<a id="com" href="#"><span class="icon-comment"></span> Comment</a>
 			</div>
-			<!-- begin htmlcommentbox.com -->
- <div style="display:none" id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
- <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
- <script type="text/javascript" id="hcb"> /*<!--*/
-  if(!window.hcb_user){hcb_user={};}
-   (function(){var s=document.createElement("script"), 
-   	l=(""+window.location || hcb_user.PAGE), h="//www.htmlcommentbox.com";
-   	s.setAttribute("type","text/javascript");
-   	s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&opts=16862&num=10");
-   	if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ 
-   	</script>
-<!-- end htmlcommentbox.com -->
+					<!-- begin htmlcommentbox.com -->
+		 <div style="display:none" id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
+		 <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+		 <script type="text/javascript" id="hcb"> /*<!--*/
+		  if(!window.hcb_user){hcb_user={};}
+		   (function(){var s=document.createElement("script"), 
+		   	l=(""+window.location || hcb_user.PAGE), h="//www.htmlcommentbox.com";
+		   	s.setAttribute("type","text/javascript");
+		   	s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&opts=16862&num=10");
+		   	if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ 
+		   	</script>
+		<!-- end htmlcommentbox.com -->
    
 		</div>
 	</div>
 	<hr>
-	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
-		<div class="span5">
-			<p>Username <a href="#">@leader_username</a></p>
-          	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          	<div>
-          		<a href="#"><span class="icon-heart"></span> Like</a>
-          		<a id="com2" href="#"><span class="icon-comment"></span> Comment</a>
-			</div>
-			
-		</div>
-	</div>
 	<?php } ?>
+	
+
 </div>
+
 
 <?php } else { 
 
@@ -199,29 +194,4 @@ function time_ago($tm,$rcs = 0) {
 
 } ?>
 
-<script>
-$(document).ready(function(){
-
-   $("#com2").click(function(){
-      $("#HCB_comment_box2").toggle(500);
-    });
- });
-   $("#com").click(function(){
-      $("#HCB_comment_box").toggle(500);
-    });
- });
-
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){
-
-	$('.clickid').click(function(){
-      var id = $(this).attr('name');
-      $('#'+id).show(400);
-    });
-
-});
-
-</script>
 <?php require_once('footer.php'); ?>
