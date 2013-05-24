@@ -11,8 +11,8 @@ $row = $result->fetch_array();
 $firstname = $row['firstname'];
 $lastname = $row['lastname'];
 
-
 $uid = $row['uid'];
+
 
 // get the count of notes from the user with uid
 $query3 = "SELECT COUNT(nid) AS ncount FROM NOTE WHERE uid='".$uid."'";
@@ -133,6 +133,7 @@ function time_ago($tm,$rcs = 0) {
 				 </div><!-- end div.span3-->
 			  <button class="btn btn-success" type="submit">Post Note</button>
 		    </form>
+
 		</div>
 	</div>
 </div>
@@ -141,9 +142,11 @@ function time_ago($tm,$rcs = 0) {
 	<h2>Notes</h2>
 
 
+
 	<?php while( $row = $result2->fetch_array(MYSQLI_ASSOC))  { ?>
 	
-<div class="row">
+
+	<div class="row">
 		<div class="span1">
 			<a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail">
 				<img src="http://critterapp.pagodabox.com/img/user.jpg" alt="">
@@ -163,8 +166,10 @@ function time_ago($tm,$rcs = 0) {
           		?>
           	</p>
           	<div>
+
           		<a href="#"><span class="icon-heart"></span> Like</a>
           		<a id="com" href="#"><span class="icon-comment"></span> Comment</a>
+
 			</div>
 					<!-- begin htmlcommentbox.com -->
 		 <div style="display:none" id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
@@ -185,6 +190,7 @@ function time_ago($tm,$rcs = 0) {
 	<?php } ?>
 	
 
+	
 </div>
 
 
@@ -193,5 +199,6 @@ function time_ago($tm,$rcs = 0) {
 	header('Location:create_new_user.php') ; 
 
 } ?>
+
 
 <?php require_once('footer.php'); ?>

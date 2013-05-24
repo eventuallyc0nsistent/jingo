@@ -1,8 +1,8 @@
 <?php 
 session_start(); 
-$database_name = 'jingo2';
-$user = 'yaojiani';
-$password = '66200535' ;
+$database_name = 'jingo';
+$user = 'root';
+$password = 'root' ;
 
 
 $mysqli = new mysqli("127.0.0.1", $user, $password, $database_name);
