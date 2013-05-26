@@ -26,6 +26,8 @@ $timefrom_name3=$_POST['timefrom_name3'];
 $timeto_name3=$_POST['timeto_name3'];
 $repeatday3=$_POST['repeatday3'];
 
+
+
 // Create connection
 $con=mysqli_connect("127.0.0.1","yaojiani","66200535","jingo2");
 
@@ -46,34 +48,51 @@ if (!$tag_name) {
 	# code...
 }
 
+if (!$timefrom_name) {
+	$timefrom_name="00:00:00";
+	# code...
+}
+
+if (!$timeto_name) {
+	$timeto_name="24:00:00";
+	# code...
+}
+
+if (!$state_name) {
+	$state_name="None";
+	# code...
+}
+
+//echo $repeatday;exit();
+
 mysqli_query($con,"INSERT INTO FILTER (uid, state, Aname , tag, x, y)
-VALUES (1,'$_POST[state_name]','$location_name','$tag_name','$_POST[lat]','$_POST[log]')");
+VALUES (1,'$state_name','$location_name','$tag_name','$_POST[lat]','$_POST[log]')");
 
 if($tag2_name)
 mysqli_query($con,"INSERT INTO FILTER (uid, state, Aname , tag, x, y)
-VALUES (1,'$_POST[state_name]','$location_name','$_POST[tag2_name]','$_POST[lat]','$_POST[log]')");
+VALUES (1,'$state_name','$location_name','$_POST[tag2_name]','$_POST[lat]','$_POST[log]')");
 
 if($tag3_name)
 mysqli_query($con,"INSERT INTO FILTER (uid, state, Aname , tag, x, y)
-VALUES (1,'$_POST[state_name]','$location_name','$_POST[tag3_name]','$_POST[lat]','$_POST[log]')");
+VALUES (1,'$state_name','$location_name','$_POST[tag3_name]','$_POST[lat]','$_POST[log]')");
 
 if($location2_name)
 {
 	mysqli_query($con,"INSERT INTO FILTER (uid, state, Aname , tag, x, y)
-	VALUES (1,'$_POST[state_name]','$_POST[location2_name]','$tag_name','$_POST[lat]','$_POST[log]')");
+	VALUES (1,'$state_name','$_POST[location2_name]','$tag_name','$_POST[lat]','$_POST[log]')");
 
 	if($tag2_name)
 	mysqli_query($con,"INSERT INTO FILTER (uid, state, Aname , tag, x, y)
-	VALUES (1,'$_POST[state_name]','$_POST[location2_name]','$_POST[tag2_name]','$_POST[lat]','$_POST[log]')");
+	VALUES (1,'$state_name','$_POST[location2_name]','$_POST[tag2_name]','$_POST[lat]','$_POST[log]')");
 
 	if($tag3_name)
 	mysqli_query($con,"INSERT INTO FILTER (uid, state, Aname , tag, x, y)
-	VALUES (1,'$_POST[state_name]','$_POST[location2_name]','$_POST[tag3_name]','$_POST[lat]','$_POST[log]')");
+	VALUES (1,'$state_name','$_POST[location2_name]','$_POST[tag3_name]','$_POST[lat]','$_POST[log]')");
 	
 }
 
 mysqli_query($con,"INSERT INTO SCHEDULE_USER (uid, timefrom, timeto , repeatday)
-VALUES (1,'$_POST[timefrom_name]','$_POST[timeto_name]','$_POST[repeatday]')");
+VALUES (1,'$timefrom_name','$timeto_name','$repeatday')");
 
 if($timefrom_name2)
 mysqli_query($con,"INSERT INTO SCHEDULE_USER (uid, timefrom, timeto , repeatday)

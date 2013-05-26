@@ -12,9 +12,10 @@ $notes= $_POST['notes'];
 $timefrom_name= $_POST['timefrom_name'];
 $timefrom_name2= $_POST['timefrom_name2'];
 
+$x1=$_POST['lat']+$_POST['Nrange']*0.869/60;
+$y1=$_POST['log']+$_POST['Nrange']*0.869/60;
 
 
-echo $tag_name;
 
 
 // Create connection
@@ -28,7 +29,8 @@ if (mysqli_connect_errno($con))
 
 
 mysqli_query($con,"INSERT INTO NOTE (uid,notetext,x,y,x1,y1)
-VALUES (1,'$_POST[notes]',80.00,85.00,100.00,120.00)");
+VALUES (1,'$_POST[notes]','$_POST[lat]','$_POST[log]','$x1','$y1')");
+
 
 $result = mysqli_query($con,"SELECT nid FROM NOTE order by Utime desc limit 1");
 
@@ -41,9 +43,34 @@ mysqli_query($con,"INSERT INTO NOTE_TAG (nid,tag)
 VALUES ('$nid','None')");
 
 //When users don't set schedule for their notes we set them in default way.
-if(!$timefrom_name)
-mysqli_query($con,"INSERT INTO SCHEDULE_DATE (nid,timefrom,timeto, datefrom, dateto)
-VALUES ('$nid','00:00:00','24:00:00','2013-05-07','2015-05-07')");
+//if(!$timefrom_name)
+//mysqli_query($con,"INSERT INTO SCHEDULE_DATE (nid,timefrom,timeto, datefrom, dateto,repeatday)
+//VALUES ('$nid','00:00:00','24:00:00','2013-05-07','2015-05-07','$_POST[repeatday]')");
+
+
+
+
+if (!$timefrom_name) {
+	$timefrom_name="00:00:00";
+	# code...
+}
+
+if (!$timeto_name) {
+	$timeto_name="24:00:00";
+	# code...
+}
+
+if (!$datefrom_name) {
+	$datefrom_name="2013-05-07";
+	# code...
+}
+
+if (!$dateto_name) {
+	$dateto_name="2015-05-07";
+	# code...
+}
+
+
 
 if($tag_name)
 mysqli_query($con,"INSERT INTO NOTE_TAG (nid,tag)
@@ -60,7 +87,7 @@ VALUES ('$nid','$_POST[tag_name3]')");
 
 if($timefrom_name)
 mysqli_query($con,"INSERT INTO SCHEDULE_DATE (nid,timefrom,timeto, datefrom, dateto,repeatday)
-VALUES ('$nid','$_POST[timefrom_name]','$_POST[timeto_name]','$_POST[datefrom_name]','$_POST[dateto_name]','$_POST[repeatday]')");
+VALUES ('$nid','$timefrom_name','$timeto_name','$datefrom_name','$dateto_name','$_POST[repeatday]')");
 
 if($timefrom_name2)
 mysqli_query($con,"INSERT INTO SCHEDULE_DATE (nid,timefrom,timeto, datefrom, dateto,repeatday)

@@ -1,8 +1,8 @@
 <?php 
 session_start(); 
-$database_name = 'jingo';
-$user = 'root';
-$password = 'root' ;
+$database_name = 'jingo2';
+$user = 'yaojiani';
+$password = '66200535' ;
 
 
 $mysqli = new mysqli("127.0.0.1", $user, $password, $database_name);
@@ -43,7 +43,7 @@ if (mysqli_connect_errno()) {
 
 if($_SESSION['loggedin']) { 
 
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username']; 
 
 ?>
 <div class="navbar navbar-inverse">
