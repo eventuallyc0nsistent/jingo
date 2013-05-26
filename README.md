@@ -57,7 +57,16 @@ Add inputs like radius for post , tags and schedule for post.
 + Post Note [DONE]
 
 + Location [Needs to be merged] --- 1 hr , 2 hrs -- 1.5
-+ Schedule [Needs to be merged] --- 1 hr , 1 hr  -- 1 
+	http://universimmedia.pagesperso-orange.fr/geo/loc.htm
++ Schedule [Needs to be merged] --- 1 hr , 1 hr  -- 1
+	scid - PRIMARY KEY,
+	nid - note id,
+	timefrom - time from,
+	timeto - time to,
+	datefrom - date from,
+	dateto - date to,
+	repeatday - Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday ,
+
 + Filter [Needs to be merged] --- 1 hr , 1 hr -- 1
 + Friendship [Friend Request being sent, need to work on displaying in list] --- 2 hrs , 3 hrs -- 2.5
 

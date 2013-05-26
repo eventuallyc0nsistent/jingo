@@ -25,7 +25,7 @@ if ($_POST) {
 	$firstname  = $_POST['firstname'];
 	$lastname   = $_POST['lastname'];
 	$email		= $_POST['email'];
-	$password	= md5($_POST['signup_password']);
+	$password	= md5($_POST['password']);
 	$username	= $_POST['username'];	
 
 	$_SESSION['username'] = $username ;
@@ -43,7 +43,7 @@ if ($_POST) {
 
 <div class="span3 well">
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
 		<div class="span2">
 			<p><a href="#">@<?php echo $username ; ?></a></p>
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>
@@ -61,6 +61,13 @@ if ($_POST) {
   <fieldset>
     <div id="legend">
       <legend class="">User Settings</legend>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Image</label>
+      <div class="controls">
+        <input type="text" id="image" name="image" value="<?php echo $row2['image'] ; ?>" class="input-xlarge">
+      </div>
     </div>
     <div class="control-group">
       <!-- Username -->

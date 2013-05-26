@@ -36,7 +36,7 @@ $result2 = $mysqli->query($query);
 
 <div class="span3 well">
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
 		<div class="span2">
 			<p><a href="#">@<?php echo $username ; ?></a></p>
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>
@@ -59,7 +59,7 @@ $result2 = $mysqli->query($query);
 	<?php if($result2->num_rows >= 1 ) { while( $row = $result2->fetch_array(MYSQLI_ASSOC))  { ?>
 	
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">
 			<p><?php echo $row['firstname'].' '.$row['lastname'] ; ?> <a href="#">@<?php echo $row['username'] ; ?></a> </p>
 			<p>

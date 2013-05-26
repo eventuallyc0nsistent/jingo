@@ -23,7 +23,7 @@ $row3 = $result->fetch_array();
 
 <div class="span3 well">
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
 		<div class="span2">
 			<p><a href="#">@<?php echo $username ; ?></a></p>
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>

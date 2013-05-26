@@ -2,7 +2,7 @@
 
 <div class="span3 well">
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
 		<div class="span2">
 			<p>admin</p>
           	<p><strong>First Last Name</strong></p>
@@ -17,7 +17,7 @@
 <div class="span6 well">
 	<h2>Notes</h2>
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
 		<div class="span5">
 			<p>Username <a href="#">@leader_username</a></p>
           	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -29,7 +29,7 @@
 	</div>
 	<hr>
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
 		<div class="span5">
 			<p>Username <a href="#">@leader_username</a></p>
           	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>

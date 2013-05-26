@@ -34,13 +34,42 @@ if($_POST) {
 
 	$radius = $_POST['radius'];
 
-	$timefrom_name= $_POST['timefrom_name'];
-	$timefrom_name2= $_POST['timefrom_name2'];
-	
 	// insert note in DB
 	$query = "INSERT INTO NOTE (uid,notetext,x,y,radius,hyperlink)  VALUES ('".$uid."','".$note."',80.00,85.00,'".$radius."','".$tag_name.",".$tag_name2.",".$tag_name3."');";
 	//echo $query;
 	$mysqli->query($query) or die(mysql_errno());
+
+	/*
+	============
+	  SCHEDULE
+	============
+	scid - PRIMARY KEY,
+	nid - note id,
+	timefrom - time from,
+	timeto - time to,
+	datefrom - date from,
+	dateto - date to,
+	repeatday - Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday ,
+	*/
+
+	if ($_POST['timefrom'] && $_POST['timeto'] && $_POST['datefrom'] && $_POST['dateto'] && $_POST['repeatday']) {
+		
+		$timefrom= $_POST['timefrom'];
+		$timeto = $_POST['timeto'];
+		$datefrom = $_POST['datefrom'];
+		$dateto =  $_POST['dateto'];
+		$repeatday =  $_POST['repeatday'];
+
+		//Get last inserted id
+		$inserted_nid = $mysqli->insert_id;
+
+		$query_schedule = "INSERT INTO SCHEDULE_DATE (`nid`, `timefrom`, `timeto` , `datefrom`, `dateto`, `repeatday`)
+						    VALUES ('$inserted_nid','$timefrom','$timeto','$datefrom','$dateto','$repeatday')" ;
+		//echo $query_schedule;
+		$mysqli->query($query_schedule) or die(mysql_errno());
+
+	}
+	
 
 }
 
@@ -77,7 +106,7 @@ function time_ago($tm,$rcs = 0) {
 
 <div class="span3 well">
 	<div class="row">
-		<div class="span1"><a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
+		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
 		<div class="span2">
 			<p><a href="#">@<?php echo $username ; ?></a></p>
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>
@@ -86,7 +115,7 @@ function time_ago($tm,$rcs = 0) {
 			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span> <span class=" badge badge-info">15 followers</span>
 		</div>
 		<div class="span4 mt10">
-		    <form accept-charset="UTF-8" action="userhome.php" method="POST">
+		    <form accept-charset="UTF-8" action="userhome.php" id="post-note" method="POST">
 		        <textarea class="span3" id="new_message" name="note"
 		        placeholder="Type in your message" rows="3"></textarea>
 
@@ -95,7 +124,7 @@ function time_ago($tm,$rcs = 0) {
 				<span class="clickid badge" name="tag">tag</span>
 				<span class="clickid badge" name="schedule">schedule</span>
 				<span class="clickid badge" name="me">#me</span>
-				<h6>320 characters remaining</h6>
+				<h6>140 characters remaining</h6>
 
 				<div class="span3" style="margin:0">
 				<!-- div#range-->
@@ -120,16 +149,53 @@ function time_ago($tm,$rcs = 0) {
 					tag : <input type="text" name="tag_name3" class="input-small" value="" maxlength="100" />
 				</div>
 
-				<!-- div#sch -->
+				<!-- div#schedule -->
 				<div id="schedule" class="clickid" style="display:none;">
-					<div id="datetimepicker3" class="input-append">
-						Start date
-						<input data-format="hh:mm:ss" type="text" class="input-small" name="timefrom_name" value="" maxlength="100" />
+					Time from :
+					<div id="datetimepicker1" class="input-append">
+						<input data-format="hh:mm:ss" type="text" class="input-small" name="timefrom" value="" placeholder="00:00:00" maxlength="100">
 						<span class="add-on">
-					      <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+							<i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-time"></i>
 					    </span>
 			  		</div>
-				</div><!-- end div#sch -->
+			  		<br/>
+
+			  		Time to :&nbsp;&nbsp;&nbsp;&nbsp;
+			  		<div id="datetimepicker2" class="input-append">
+						<input data-format="hh:mm:ss" type="text" class="input-small" name="timeto" value="" placeholder="00:00:00" maxlength="100">
+						<span class="add-on">
+							<i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-time"></i>
+					    </span>
+			  		</div>
+
+			  		Date from :
+			  		<div id="datefrompicker1" class="input-append">
+			  			<input data-format="yyyy-MM-dd" name="datefrom" class="input-small" value="" type="text"></input>
+				  		<span class="add-on">
+					      <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+					    </span>
+					</div>
+
+					Date to :&nbsp;&nbsp;&nbsp;&nbsp;
+			  		<div id="datetopicker1" class="input-append">
+			  			<input data-format="yyyy-MM-dd" name="dateto" class="input-small" value="" type="text"></input>
+				  		<span class="add-on">
+					      <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i>
+					    </span>
+					</div>
+
+			  		<label for="repeatday">Repeat:</label>
+					<select name="repeatday">
+					  <option value ="Any">Any</option>  <!--any refer to null in the database-->
+					  <option value ="Monday">Monday</option>
+					  <option value ="Tuesday">Tuesday</option>
+					  <option value ="Wednesday">Wednesday</option>
+					  <option value ="Thursday">Thursday</option>
+					  <option value ="Friday">Friday</option>
+					  <option value ="Saturday">Saturday</option>
+					  <option value ="Sunday">Sunday</option>
+					</select>
+				</div><!-- end div#schedule -->
 				 </div><!-- end div.span3-->
 			  <button class="btn btn-success" type="submit">Post Note</button>
 		    </form>
@@ -148,8 +214,8 @@ function time_ago($tm,$rcs = 0) {
 
 	<div class="row">
 		<div class="span1">
-			<a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail">
-				<img src="http://critterapp.pagodabox.com/img/user.jpg" alt="">
+			<a href="#" class="thumbnail">
+				<img src="include/img/users/user.jpg" alt="">
 			</a>
 		</div>
 		<div class="span5">

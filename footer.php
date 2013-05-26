@@ -50,6 +50,23 @@ $(document).ready(function(){
 		});
 
 	});
+
+	// validating notes
+	$('#post-note').validate({
+		rules : {
+			note : {
+				required : true ,
+				maxlength : 140 ,
+				minlength : 1
+			}
+		},
+		messages : {
+			note :  {
+				minlength : "Message is empty",
+				maxlength : "Message exceeds by 140 characters",
+			}
+		}
+	});
 	
 	// validating using jQuery plugin for form validation
 	$("#signup").validate({
@@ -156,7 +173,27 @@ $(document).ready(function(){
       $("#HCB_comment_box2").toggle(500);
     });
 
-	
+	$('.clickid').click(function(){
+     	var id = $(this).attr('name');
+    	$('#'+id).show(400);
+    });
+
+	// date time picker on user home page while posting
+    $('#datetimepicker1').datetimepicker({
+      pickDate: false
+    });
+
+    $('#datetimepicker2').datetimepicker({
+      pickDate: false
+    });
+
+    $('#datefrompicker1').datetimepicker({
+      pickTime: false
+    });
+
+     $('#datetopicker1').datetimepicker({
+      pickTime: false
+    });
 
 });
 

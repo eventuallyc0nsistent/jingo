@@ -19,12 +19,14 @@ if (mysqli_connect_errno()) {
 <head>
 	<link rel="stylesheet" type="text/css" href="include/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="include/css/style.css">
+	<link rel="stylesheet" type="text/css" href="include/css/datetimepicker.css">
 
 	<script type="text/javascript" src="include/js/jquery-2.0.0.min.js"></script>
 	<script type="text/javascript" src="include/js/bootstrap.js"></script>
 
 	<script type="text/javascript" src="include/js/geolocate.js"></script>
 	<script type="text/javascript" src="include/js/jquery.form.js"></script>
+	<script type="text/javascript" src="include/js/datetimepicker.js"></script>
 	<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
 
 
@@ -54,7 +56,7 @@ if($_SESSION['loggedin']) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="index.php">Jingo</a>
+			<a class="brand" href="userhome.php">Jingo</a>
 			<div class="nav-collapse collapse">
 				<ul class="nav">
 					<li><a href="userhome.php"><i class="icon-home icon-white"></i> Home</a></li>
@@ -70,13 +72,13 @@ if($_SESSION['loggedin']) {
 					<form style="margin:0" class="form-search pull-left" action="find_user.php" id="find-user" method="POST">
 						<div class="input-append" style="margin:0 15px"><input type="text" id="" name="find-user"><span class="add-on"><i class="icon-search"></i></span></div>
 					</form>
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="border-radius:4px">
 						<i class="icon-user"></i><?php echo $username ; ?><span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="settings.php"><i class="icon-wrench"></i> Settings</a></li>
 						<li class="divider"></li>
-						<li><a href="logout.php"><i class="icon-share"></i> Logout</a></li>
+						<li><a href="logout.php"><i class="icon-off"></i> Logout</a></li>
 					</ul>
 				</div>
 			</div>
