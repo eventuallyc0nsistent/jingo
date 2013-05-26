@@ -48,13 +48,7 @@ Add inputs like radius for post , tags and schedule for post.
 
 ###User Settings
 
-+__settings.php___ : User can edit his old settings
-
-#Parts remaining 
-+ Sending friend requests.
-+ Adding schedule for notes.
-+ Filtering or user settings page.
-+ Finding nearby places : Using Google Places API
++ __settings.php___ : User can edit his old settings
 
 
 #List to complete 
