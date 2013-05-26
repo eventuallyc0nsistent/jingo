@@ -232,8 +232,8 @@ $(document).ready(function(){
 
 
 	<label for="repeatday">Repeat:</label><br>
-	<select name="repeatday">
-	  <option value ="Any">Any</option>  <!--any refer to null in the database-->
+	<select name="repeatday" >
+	  <option value ="Any" >Any</option>  <!--any refer to null in the database-->
 	  <option value ="Monday">Monday</option>
 	  <option value ="Tuesday">Tuesday</option>
 	  <option value ="Wednesday">Wednesday</option>

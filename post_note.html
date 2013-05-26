@@ -8,6 +8,27 @@
 <title>jingo</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+<script>
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+
+function showPosition(position)
+  {
+  var lat=position.coords.latitude;
+  var log=position.coords.longitude;
+  document.getElementById("lat").value=lat;
+  document.getElementById("log").value=log;
+  
+ 
+ }
+  
+</script>
 
 
 <script>
@@ -86,7 +107,7 @@ $(document).ready(function(){
 </div>
 <div>
 <input id="btn1" type="button" name="like" value="like"  />
-<input id="btn2" type="button" name="range" value="range"  />
+<input id="btn2" type="button" name="range" value="range" onclick="getLocation()" />
 <input id="btn4" type="button" name="tag" value="tag"  />
 <input id="btn3" type="button" name="schedule" value="schedule"  />
 <input id="btn5" type="button" name="me" value="#me"  />
@@ -96,6 +117,11 @@ $(document).ready(function(){
 <label for="Nrange">radius:</label><br>
 <input type="text" name="Nrange" value="" maxlength="100" />
 
+</div>
+
+<div style="display:none;">
+<input id="lat" type="text" name="lat" value="" maxlength="100" /><br>
+<input id="log" type="text" name="log" value="" maxlength="100" />
 </div>
 
 <div id="tag" style="display:none;">

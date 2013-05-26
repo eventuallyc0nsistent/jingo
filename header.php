@@ -45,7 +45,7 @@ if (mysqli_connect_errno()) {
 
 if($_SESSION['loggedin']) { 
 
-	$username = $_SESSION['username'];
+	$username = $_SESSION['username']; 
 
 ?>
 <div class="navbar navbar-inverse">
