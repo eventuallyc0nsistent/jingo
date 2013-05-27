@@ -6,12 +6,13 @@ if($_POST) {
 	$firstname  = $_POST['firstname'];
 	$lastname   = $_POST['lastname'];
 	$email		= $_POST['email'];
+	$username	= $_POST['username'];
 	$password	= md5($_POST['signup_password']);
 
 	// query to add to DB
 
 	$query = "INSERT INTO  USER ( firstname  , lastname  , email  , password , username ) VALUES ( '".$firstname."',  '".$lastname."', '". $email."', '".$password."','".$username."');" ;
-	//echo $query ;
+	// echo $query ; exit;
 	$result = $mysqli->query($query) or die(mysql_errno());
 	if($result)
 			{

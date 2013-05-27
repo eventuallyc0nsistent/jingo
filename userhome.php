@@ -48,10 +48,12 @@ if($_POST) {
 	$lat = $_POST['lat'];
 	$lon = $_POST['lon'];
 	$radius = $_POST['radius'];
+	$x1 = $lat + $radius * 0.869 / 60 ;
+	$y1 = $lon + $radius * 0.869 / 60 ;
 
 	// insert note in DB
-	$query = "INSERT INTO NOTE (uid,notetext,x,y,radius,hyperlink)  VALUES ('".$uid."','".$note."',$lat,$lon,'".$radius."','".$tag_name.",".$tag_name2.",".$tag_name3."');";
-	 echo $query;
+	$query = "INSERT INTO NOTE (uid,notetext,x,y,x1,y1,radius,hyperlink)  VALUES ('".$uid."','".$note."',$lat,$lon,$x1,$y1,'".$radius."','".$tag_name.",".$tag_name2.",".$tag_name3."');";
+	 // echo $query;exit;
 	$mysqli->query($query) or die(mysql_errno());
 
 	/*
@@ -89,7 +91,22 @@ if($_POST) {
 }
 
 // get all notes from the current user
-$query2 = "SELECT notetext,hyperlink,Utime,Nlike FROM NOTE WHERE uid = '".$uid."' ORDER BY nid DESC;";
+ $query2 = "SELECT nid,notetext,hyperlink,Utime,Nlike,Nfav FROM NOTE WHERE uid = '".$uid."' ORDER BY nid DESC;";
+// $query2 = "select distinct nid,notetext
+// 			from 
+// 			(SELECT F.uid, tag, F.x Fx,F.y Fy, A.x,A.y,A.x1,A.y1,timefrom,timeto,repeatday
+// 			       from FILTER F, ADDRESS A NATURAL JOIN SCHEDULE_USER S
+// 			       WHERE F.uid=S.uid and F.Aname=A.Aname and F.uid=$uid 
+// 			and current_time between timefrom and timeto and (DAYNAME(current_date)=repeatday or repeatday='Any')
+// 			and F.x between A.x and A.x1 and F.y between A.y and A.y1) A,
+// 			(SELECT NOTE.nid,notetext,x,y,x1,y1,tag,timefrom, timeto,datefrom,dateto,repeatday
+// 			FROM NOTE LEFT JOIN NOTE_TAG N ON NOTE.nid=N.nid LEFT JOIN SCHEDULE_DATE S ON NOTE.nid=S.nid, FRIENDSHIP F
+// 			where NOTE.uid=F.leaderuid and F.followeruid=$uid and current_time between timefrom and timeto  and current_date between datefrom 
+// 			and dateto and (DAYNAME(current_date)=repeatday or repeatday='Any')
+// 			) B
+// 			where A.Fx between B.x and B.x1 AND A.Fy between B.y and B.y1 and A.tag=B.tag ;
+// 			";
+// echo $query2;
 $result2 = $mysqli->query($query2) or die(mysql_errno());
 
 require_once ('time_ago.php');
@@ -257,16 +274,23 @@ margin-bottom: 5px;
           			$tags = explode(',', $row['hyperlink']);
           			foreach ($tags as $key) {
           				echo "<a href='#'>".$key."</a> ";
-          			}
+          			} 
           		?>
           	</p>
           	<div>
 
-          		<a href="#"><span class="icon-heart"></span> Like</a>
+          		<a href="#" class="like-button" name="<?php echo $row['nid'] ;?>"><span class="icon-heart"></span> <?php echo $row['Nlike']?> Like</a>
           		<a id="com" href="#"><span class="icon-comment"></span> Comment</a>
+          		<a href="#" class="fav-button" name="<?php echo $row['nid'] ;?>">
+          			<?php if($row['Nfav'] == 1 ) { 
+          				echo "<span class='icon-star icon-white'></span> Favorited" ;
+          			}else {
+          				echo "<span class='icon-star'></span> Favorite" ;
+          			}?>
+          		</a>
 
 			</div>
-					<!-- begin htmlcommentbox.com -->
+		<!-- begin htmlcommentbox.com -->
 		 <div style="display:none" id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">HTML Comment Box</a> is loading comments...</div>
 		 <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
 		 <script type="text/javascript" id="hcb"> /*<!--*/

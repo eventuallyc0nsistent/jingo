@@ -56,7 +56,7 @@ Add inputs like radius for post , tags and schedule for post.
 + Login / Logout  [][DONE]
 + Post Note [][DONE]
 
-+ Schedule [Needs to be merged] --- 1 hr , 1 hr  -- 1
++ Schedule --- 1 hr , 1 hr  -- 1
 	scid - PRIMARY KEY,
 	nid - note id,
 	timefrom - time from,
@@ -69,13 +69,13 @@ Add inputs like radius for post , tags and schedule for post.
 
 + Filter [][Needs to be merged] --- 1 hr , 1 hr -- 1
 
-+ Friendship [Friend Request being sent, need to work on displaying in list] --- 2 hrs , 3 hrs -- 2.5
++ Friendship [][DONE] --- 2 hrs , 3 hrs -- 2.5
 
 + Comments [TO DO] --- Use Jiani's code if you can't do it ---- 2 hrs , 2 hrs -- 2
 + Search [Searching Friends, Notes, Tags, Everything ] [DONE]---- 5 hrs , 5 hrs -- 5
 
-+ Like [][TO DO]  -------------- EXTRA CREDIT
-+ Bookmark Notes [][TO DO]  -------------- EXTRA CREDIT
++ Like [][DONE]  -------------- EXTRA CREDIT
++ Bookmark Notes [][DONE]  -------------- EXTRA CREDIT
 + Model Area [need to ask TA]  -------------- EXTRA CREDIT
 + Recommend Tags [][TO DO]  -------------- EXTRA CREDIT
 

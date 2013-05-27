@@ -34,11 +34,24 @@ if($_POST) {
 	$lat = $_POST['lat'];
 	$lon = $_POST['lon'];
 
+	$radius = $_POST['radius'];
+	$x1 = $lat + $radius * 0.869 / 60 ;
+	$y1 = $lon + $radius * 0.869 / 60 ;
+
 	$query_filter = "
 					 INSERT INTO FILTER (`uid`, `state`, `Aname`, `tag`, `x`, `y`) 
 					 VALUES ('$uid', '$state', '$address', '$tag_name,$tag_name2,$tag_name3', '$lat', '$lon')
 					" ;
 	$mysqli->query($query_filter) ;
+
+	// Insert Into address too
+	$query_address = "
+					INSERT INTO ADDRESS (`Aname`, `x`, `y`, `x1`, `y1`) 
+					 VALUES ('$address', '$lat', '$lon', $x1, $y1)
+					";
+
+	$mysqli->query($query_address) ;
+
 }
 
 ?>
@@ -128,9 +141,11 @@ margin-bottom: 5px;
 			   <input id="lat" type="text" name="lat" value="" maxlength="100" />
 			   <label for="longitude">longitude:</label>
 			   <input id="lon" type="text" name="lon" value="" maxlength="100" />
-			    <label for="longitude">Closest matching address :</label>
-			    <input id="address" type="text" name="address" value="" maxlength="100" ></input>
-			 </div>
+			    <label for="longitude">Address :</label>
+			    <input id="address" type="text" name="address" value="" maxlength="100"/>
+			    <label for="radius">Radius</label>
+		      <input type="text" id="radius" name="radius" maxlength="100"/>
+			 </div>	      
 		</div>
 	</div>
     

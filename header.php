@@ -32,7 +32,7 @@ if (isset($_SESSION['loggedin'])) {
 
 	<script type="text/javascript" src="include/js/jquery.form.js"></script>
 	<script type="text/javascript" src="include/js/datetimepicker.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="include/js/geolocate.js"></script>
 	<title>Jingo</title>
 
@@ -65,9 +65,9 @@ if($session_status) {
 				<ul class="nav">
 					<li><a href="userhome.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="friend_request.php"><i class="icon-envelope icon-white"></i> Messages</a></li>
+					<li><a href="friend_request.php"><i class="icon-envelope icon-white"></i> Friend Request</a></li>
 					<li class="divider-vertical"></li>
-                  	<li><a href="#"><i class="icon-signal icon-white"></i> Stats</a></li>
+                  	<li><a href="show_favorite.php"><i class="icon-star icon-white"></i> Favorites</a></li>
 					<li class="divider-vertical"></li>
 					<li><a href="#"><i class="icon-lock icon-white"></i> Profile</a></li>
 					<li class="divider-vertical"></li>

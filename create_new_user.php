@@ -6,7 +6,7 @@
 			</p>
 
 			   <div class="" id="loginModal">
-          <div class="modal-header">
+          Username<div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3>Have an Account?</h3>
           </div>

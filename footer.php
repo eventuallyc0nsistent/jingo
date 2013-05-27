@@ -77,6 +77,44 @@ $(document).ready(function(){
 
 	});
 
+	// Like note
+	$('.like-button').click(function(){
+
+		var nid = $(this).attr('name');
+		console.log(nid);
+
+		$.ajax({
+			url : "like.php",
+			type : "POST" ,
+			data : "nid="+nid,
+			success : function () {
+				window.location.reload(true);
+				// $(this).attr('class','btn') ;
+			}
+
+		});
+
+	});
+
+	// Like note
+	$('.fav-button').click(function(){
+
+		var nid = $(this).attr('name');
+		console.log(nid);
+
+		$.ajax({
+			url : "favorite.php",
+			type : "POST" ,
+			data : "nid="+nid,
+			success : function () {
+				window.location.reload(true);
+				// $(this).attr('class','btn') ;
+			}
+
+		});
+
+	});
+
 	// validating notes
 	$('#post-note').validate({
 		rules : {
