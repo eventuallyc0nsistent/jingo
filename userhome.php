@@ -86,6 +86,23 @@ require_once ('time_ago.php');
 
 <?php if($_SESSION['loggedin']) { ?>
 
+<style type="text/css">
+
+#mapCanvas {
+    width: 225px;
+    height: 200px;
+    float: left;
+ }
+#infoPanel {
+float: left;
+margin-left: 10px;
+}
+#infoPanel div {
+margin-bottom: 5px;
+}
+
+</style>
+
 <div class="span3 well">
 	<div class="row">
 		<div class="span1"><a href="#" class="thumbnail"><img src="include/img/users/user.jpg" alt=""></a></div>
@@ -99,13 +116,14 @@ require_once ('time_ago.php');
 		<div class="span4 mt10">
 		    <form accept-charset="UTF-8" action="userhome.php" id="post-note" method="POST">
 		    	<!-- hidden type for location-->
-		    	<input type="hidden" value="" name="lat" id="lat"/>
-		    	<input type="hidden" value="" name="lon" id="lon"/>
+		    	<!-- <input type="hidden" value="" name="lat" id="lat"/>
+		    	<input type="hidden" value="" name="lon" id="lon"/> -->
+
 		        <textarea class="span3" id="new_message" name="note"
 		        placeholder="Type in your message" rows="3"></textarea>
 
 		        <div class="clear-fix"></div>
-		        <span class="clickid badge" name="range">radius</span>
+		        <span class="clickid badge" name="range">location</span>
 				<span class="clickid badge" name="tag">tag</span>
 				<span class="clickid badge" name="schedule">schedule</span>
 				<span class="clickid badge" name="me">#me</span>
@@ -114,7 +132,19 @@ require_once ('time_ago.php');
 				<div class="span3" style="margin:0">
 				<!-- div#range-->
 				<div id="range" style="display:none;">
-					radius:	<input type="text" name="radius" class="input-small" value="" maxlength="100" />
+					radius:	<input type="text" name="radius" class="input-medium" value="" maxlength="100" />
+					<div id="mapCanvas"></div>
+					<div id="infoPanel">
+					    
+					    <div id="info"></div>
+					    <div id="markerStatus"><i>Click and drag the marker.</i></div>
+					    <label for="latitude">latitude:</label>
+					   <input id="lat" type="text" name="lat" value="" maxlength="100" />
+					   <label for="longitude">longitude:</label>
+					   <input id="lon" type="text" name="lon" value="" maxlength="100" />
+					    <b>Closest matching address:</b>
+					    <div id="address"></div><br/>
+					 </div>
 				</div>
 
 				<!-- div#tag-->
