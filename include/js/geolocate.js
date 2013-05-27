@@ -10,8 +10,9 @@ function showPosition(position)
   {
   lat=position.coords.latitude;
   lon=position.coords.longitude;
-  console.log(lat);
-  console.log(lon);
+  document.getElementById("lat").value=lat;
+  document.getElementById("lon").value=lon;
+
   latlon=new google.maps.LatLng(lat, lon)
   mapholder=document.getElementById('mapholder')
   mapholder.style.height='250px';

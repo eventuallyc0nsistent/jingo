@@ -17,16 +17,46 @@ $row3 = $result->fetch_array();
 
 // add friend 
 $followerid = $uid ; 
-// $status = 2 ; // hard value if sending friend request set status to 2
+$status = 2 ; // hard value if sending friend request set status to 2
 
 // $find_user who still doesn't have a friend request sent and is in the USER table
-$find_user = $_POST['find-user'];
+$find_user = explode('in', $_POST['find-user']);
+$search_keyword = trim($find_user[0]);
+$search_category = trim($find_user[1]);
 
-$query = "SELECT U.uid,U.username,U.firstname,U.lastname, F.status FROM USER U, FRIENDSHIP F WHERE U.username LIKE '%".$find_user."%' AND F.leaderuid = U.uid ";
+// SELECT all distinct uid and their info except the one searching
+if ($search_category == 'users') { 
+	
+	$query = "
+				SELECT DISTINCT U.uid, U.firstname , U.lastname , U.username
+				FROM USER U 
+				where U.uid != ".$uid."
+				AND U.username LIKE '%".$search_keyword."%'
+			 " ;
+	// echo $query ; exit;
 
-//$query = "SELECT U.uid,U.username,U.firstname,U.lastname FROM USER U WHERE U.username LIKE '%".$find_user."%' AND U.uid NOT IN ( SELECT leaderuid FROM FRIENDSHIP WHERE status = '".$status."') AND U.uid != '".$uid."'";
-// echo $query;
+} elseif($search_category == 'notes') {
+	$query = " 
+				SELECT notetext,hyperlink,Utime,Nlike 
+				FROM NOTE 
+				WHERE notetext LIKE '%".$search_keyword."%' 
+				ORDER BY nid DESC; 
+			" ;
+	// echo $query ; exit;
+
+} else {
+	// searching for tags
+	$query = "
+			 	SELECT notetext , Utime , Nlike , hyperlink
+			 	FROM NOTE
+			 	WHERE FIND_IN_SET('".$search_keyword."', hyperlink)
+			";
+	// echo $query ; exit;
+}
+//echo $query;
 $result2 = $mysqli->query($query);
+
+require_once('time_ago.php');
 
 ?>
 
@@ -52,29 +82,89 @@ $result2 = $mysqli->query($query);
 </div>
 
 <div class="span6 well">
-	<h2>You might want to add ?</h2>
+	<h4>You searched for '<?php echo $search_keyword?>' in <?php echo $search_category ?></h4>
+	<br/>
+	<?php if($result2->num_rows >= 1 ) { 
 
+				while( $row = $result2->fetch_array(MYSQLI_ASSOC))  
 
+					{ 
+							if($search_category == 'users') { 
 
-	<?php if($result2->num_rows >= 1 ) { while( $row = $result2->fetch_array(MYSQLI_ASSOC))  { ?>
-	
+	?>
+
 	<div class="row">
 		<div class="span1"><a href="#" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">
 			<p><?php echo $row['firstname'].' '.$row['lastname'] ; ?> <a href="#">@<?php echo $row['username'] ; ?></a> </p>
-			<p>
-				<?php if ($row['status'] == 2) { ?>
-				<a class="btn" name="<?php echo $row['uid'] ; ?>">Friend Request Sent</a>
-				<?php } elseif($row['status'] == 1) { ?>
-				<a class="btn add-friend" name="<?php echo $row['uid'] ; ?>">Add Friend</a>
-				<?php } else { ?>
-				<a class="btn add-friend" name="<?php echo $row['uid'] ; ?>">Add Friend</a>
-				<?php } ?>
-			</p>
 		</div>
 	</div>
 	<hr>
-	<?php } } else { echo "<h6> Sorry no matches founds ! Try a different query or you're friends already</h6>" ;}?>
+	<?php 	}  elseif ($search_category == 'notes') { ?>
+	<div class="row">
+		<div class="span1">
+			<a href="#" class="thumbnail">
+				<img src="include/img/users/user.jpg" alt="">
+			</a>
+		</div>
+		<div class="span5">
+			<p><?php echo $firstname.' '.$lastname ; ?> <a href="#">@<?php echo $username ; ?></a> 
+			<span class="pull-right"><small><?php echo time_ago(strtotime($row['Utime']));?></small></span>
+			</p>
+          	<p><?php echo stripslashes($row['notetext']) ; ?></p>
+          	<p>
+          		<?php 
+          			$tags = explode(',', $row['hyperlink']);
+          			foreach ($tags as $key) {
+          				echo "<a href='#'>".$key."</a> ";
+          			}
+          		?>
+          	</p>
+          	<div>
+
+          		<a href="#"><span class="icon-heart"></span> Like</a>
+          		<a id="com" href="#"><span class="icon-comment"></span> Comment</a>
+
+			</div>   
+		</div>
+	</div>
+	<hr>
+	 <?php 	} elseif($search_category == 'tags') {?> 
+
+	<div class="row">
+		<div class="span1">
+			<a href="#" class="thumbnail">
+				<img src="include/img/users/user.jpg" alt="">
+			</a>
+		</div>
+		<div class="span5">
+			<p><?php echo $firstname.' '.$lastname ; ?> <a href="#">@<?php echo $username ; ?></a> 
+			<span class="pull-right"><small><?php echo time_ago(strtotime($row['Utime']));?></small></span>
+			</p>
+          	<p><?php echo stripslashes($row['notetext']) ; ?></p>
+          	<p>
+          		<?php 
+          			$tags = explode(',', $row['hyperlink']);
+          			foreach ($tags as $key) {
+          				echo "<a href='#'>".$key."</a> ";
+          			}
+          		?>
+          	</p>
+          	<div>
+
+          		<a href="#"><span class="icon-heart"></span> Like</a>
+          		<a id="com" href="#"><span class="icon-comment"></span> Comment</a>
+
+			</div>   
+		</div>
+	</div>
+	<hr>
+	 <?php }else { 
+
+	 					echo "<h6> Sorry no matches founds ! Try a different query or you're friends already</h6>" ;
+	 				} 
+	 	} }
+	 ?>
 </div>
 
 <!-- set variables to send via ajax add_friend() -->

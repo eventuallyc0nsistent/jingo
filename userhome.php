@@ -32,11 +32,14 @@ if($_POST) {
 	$tag_name2= $_POST['tag_name2'];
 	$tag_name3= $_POST['tag_name3'];
 
+	// user co-ordinates
+	$lat = $_POST['lat'];
+	$lon = $_POST['lon'];
 	$radius = $_POST['radius'];
 
 	// insert note in DB
-	$query = "INSERT INTO NOTE (uid,notetext,x,y,radius,hyperlink)  VALUES ('".$uid."','".$note."',80.00,85.00,'".$radius."','".$tag_name.",".$tag_name2.",".$tag_name3."');";
-	//echo $query;
+	$query = "INSERT INTO NOTE (uid,notetext,x,y,radius,hyperlink)  VALUES ('".$uid."','".$note."',$lat,$lon,'".$radius."','".$tag_name.",".$tag_name2.",".$tag_name3."');";
+	// echo $query;
 	$mysqli->query($query) or die(mysql_errno());
 
 	/*
@@ -59,7 +62,7 @@ if($_POST) {
 		$datefrom = $_POST['datefrom'];
 		$dateto =  $_POST['dateto'];
 		$repeatday =  $_POST['repeatday'];
-
+		
 		//Get last inserted id
 		$inserted_nid = $mysqli->insert_id;
 
@@ -77,28 +80,7 @@ if($_POST) {
 $query2 = "SELECT notetext,hyperlink,Utime,Nlike FROM NOTE WHERE uid = '".$uid."' ORDER BY nid DESC;";
 $result2 = $mysqli->query($query2) or die(mysql_errno());
 
-// results for query 2 
-
-// $notetext = $row2['notetext'];
-// $hyperlink = $row2['hyperlink'];
-// $note_time = $row2['Utime'];
-// $likes = $row2['Nlike'];
-
-/*-- 
-function : time_ago 
-source : http://css-tricks.com/snippets/php/time-ago-function/
-returns : time in 'x'ago format
---*/
-function time_ago($tm,$rcs = 0) {
-   $cur_tm = time(); $dif = $cur_tm-$tm;
-   $pds = array('second','minute','hour','day','week','month','year','decade');
-   $lngh = array(1,60,3600,86400,604800,2630880,31570560,315705600);
-   for($v = sizeof($lngh)-1; ($v >= 0)&&(($no = $dif/$lngh[$v])<=1); $v--); if($v < 0) $v = 0; $_tm = $cur_tm-($dif%$lngh[$v]);
-
-   $no = floor($no); if($no <> 1) $pds[$v] .='s'; $x=sprintf("%d %s ",$no,$pds[$v]);
-   if(($rcs == 1)&&($v >= 1)&&(($cur_tm-$_tm) > 0)) $x .= time_ago($_tm);
-   return $x;
-}
+require_once ('time_ago.php');
 
 ?>
 
@@ -116,6 +98,9 @@ function time_ago($tm,$rcs = 0) {
 		</div>
 		<div class="span4 mt10">
 		    <form accept-charset="UTF-8" action="userhome.php" id="post-note" method="POST">
+		    	<!-- hidden type for location-->
+		    	<input type="hidden" value="" name="lat" id="lat"/>
+		    	<input type="hidden" value="" name="lon" id="lon"/>
 		        <textarea class="span3" id="new_message" name="note"
 		        placeholder="Type in your message" rows="3"></textarea>
 

@@ -56,8 +56,6 @@ Add inputs like radius for post , tags and schedule for post.
 + Login / Logout  [DONE]
 + Post Note [DONE]
 
-+ Location [Needs to be merged] --- 1 hr , 2 hrs -- 1.5
-	http://universimmedia.pagesperso-orange.fr/geo/loc.htm
 + Schedule [Needs to be merged] --- 1 hr , 1 hr  -- 1
 	scid - PRIMARY KEY,
 	nid - note id,
@@ -65,9 +63,12 @@ Add inputs like radius for post , tags and schedule for post.
 	timeto - time to,
 	datefrom - date from,
 	dateto - date to,
-	repeatday - Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday ,
-
+	repeatday - Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday
+	+ Adding Schedule --- [DONE]
+	+ Getting messages on schedule
+	
 + Filter [Needs to be merged] --- 1 hr , 1 hr -- 1
+
 + Friendship [Friend Request being sent, need to work on displaying in list] --- 2 hrs , 3 hrs -- 2.5
 
 + Comments [TO DO] --- Use Jiani's code if you can't do it ---- 2 hrs , 2 hrs -- 2
@@ -80,3 +81,6 @@ Add inputs like radius for post , tags and schedule for post.
 + Improvement [need to ask TA]
 + documentation [Pretty much documented code] -- being taken care of already
 + UI and Overall [Works ok until now. Can add suggestions here] -- Pretty good
+
+#Ignored files
+__header.php__

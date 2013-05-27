@@ -1,8 +1,8 @@
 <?php 
 session_start(); 
-$database_name = 'jingo2';
-$user = 'yaojiani';
-$password = '66200535' ;
+$database_name = 'jingo';
+$user = 'root';
+$password = 'root' ;
 
 
 $mysqli = new mysqli("127.0.0.1", $user, $password, $database_name);
@@ -12,6 +12,12 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
+
+if (isset($_SESSION['loggedin'])) {
+		$session_status = $_SESSION['loggedin'];
+	} else {
+		$session_status = false;
+	}
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +33,7 @@ if (mysqli_connect_errno()) {
 	<script type="text/javascript" src="include/js/geolocate.js"></script>
 	<script type="text/javascript" src="include/js/jquery.form.js"></script>
 	<script type="text/javascript" src="include/js/datetimepicker.js"></script>
-	<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
 
 
 	<title>Jingo</title>
@@ -43,7 +49,7 @@ if (mysqli_connect_errno()) {
 
 <?php 
 
-if($_SESSION['loggedin']) { 
+if($session_status) { 
 
 	$username = $_SESSION['username']; 
 
@@ -70,7 +76,10 @@ if($_SESSION['loggedin']) {
 				</ul>
 				<div class="btn-group pull-right">
 					<form style="margin:0" class="form-search pull-left" action="find_user.php" id="find-user" method="POST">
-						<div class="input-append" style="margin:0 15px"><input type="text" id="" name="find-user"><span class="add-on"><i class="icon-search"></i></span></div>
+						<div class="input-append" style="margin:0 15px">
+							<input placeholder="Search in notes, tags or users" type="text" id="" name="find-user">
+							<span class="add-on"><i class="icon-search"></i></span>
+						</div>
 					</form>
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#" style="border-radius:4px">
 						<i class="icon-user"></i><?php echo $username ; ?><span class="caret"></span>
@@ -89,6 +98,8 @@ if($_SESSION['loggedin']) {
 	<!--/.navbar-inner -->
 </div>
 <!--/.navbar -->
-<?php } ?>
+<?php } else {
+	//do nothing
+} ?>
 
 <div class="container">
