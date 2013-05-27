@@ -52,9 +52,9 @@ Add inputs like radius for post , tags and schedule for post.
 
 
 #List to complete 
-+ Register  [DONE]
-+ Login / Logout  [DONE]
-+ Post Note [DONE]
++ Register  [][DONE]
++ Login / Logout  [][DONE]
++ Post Note [][DONE]
 
 + Schedule [Needs to be merged] --- 1 hr , 1 hr  -- 1
 	scid - PRIMARY KEY,
@@ -64,19 +64,20 @@ Add inputs like radius for post , tags and schedule for post.
 	datefrom - date from,
 	dateto - date to,
 	repeatday - Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday
-	+ Adding Schedule --- [DONE]
+	+ Adding Schedule --- [][DONE]
 	+ Getting messages on schedule
-	
-+ Filter [Needs to be merged] --- 1 hr , 1 hr -- 1
+
++ Filter [][Needs to be merged] --- 1 hr , 1 hr -- 1
 
 + Friendship [Friend Request being sent, need to work on displaying in list] --- 2 hrs , 3 hrs -- 2.5
 
 + Comments [TO DO] --- Use Jiani's code if you can't do it ---- 2 hrs , 2 hrs -- 2
-+ Search [Searching Friends, Notes, Tags, Everything !] ---- 5 hrs , 5 hrs -- 5
-+ Like [TO DO]  -------------- EXTRA CREDIT
-+ Bookmark Notes [TO DO]  -------------- EXTRA CREDIT
++ Search [Searching Friends, Notes, Tags, Everything ] [DONE]---- 5 hrs , 5 hrs -- 5
+
++ Like [][TO DO]  -------------- EXTRA CREDIT
++ Bookmark Notes [][TO DO]  -------------- EXTRA CREDIT
 + Model Area [need to ask TA]  -------------- EXTRA CREDIT
-+ Recommend Tags [TO DO]  -------------- EXTRA CREDIT
++ Recommend Tags [][TO DO]  -------------- EXTRA CREDIT
 
 + Improvement [need to ask TA]
 + documentation [Pretty much documented code] -- being taken care of already

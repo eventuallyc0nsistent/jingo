@@ -15,6 +15,12 @@ $query3 = "SELECT COUNT(nid) AS ncount FROM NOTE WHERE uid='".$uid."'";
 $result=$mysqli->query($query3);
 $row3 = $result->fetch_array();
 
+// get the follower count
+$query_follower_count = "SELECT COUNT(followeruid) as fcount FROM FRIENDSHIP WHERE leaderuid = '".$uid."'";
+$result_follower_count = $mysqli->query($query_follower_count);
+$row_follower_count = $result_follower_count->fetch_array();
+// echo $result_follower_count;exit;
+
 // get user details for setting profile
 $query2 = "SELECT firstname  , lastname  , email  , username FROM USER where uid = '".$uid."'" ;
 $result2 = $mysqli->query($query);
@@ -49,7 +55,9 @@ if ($_POST) {
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>
 		</div>
 		<div class="span3 mt10">
-			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span> <span class=" badge badge-info">15 followers</span>
+			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span> 
+      <span class=" badge badge-info"><?php echo $row_follower_count['fcount']?> followers</span>
+      <a href="set_filters.php"><span class="badge badge-inverse">filters</span></a>
 		</div>
 		
 	</div>

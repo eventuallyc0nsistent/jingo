@@ -65,7 +65,7 @@ if($session_status) {
 				<ul class="nav">
 					<li><a href="userhome.php"><i class="icon-home icon-white"></i> Home</a></li>
 					<li class="divider-vertical"></li>
-					<li><a href="#"><i class="icon-envelope icon-white"></i> Messages</a></li>
+					<li><a href="friend_request.php"><i class="icon-envelope icon-white"></i> Messages</a></li>
 					<li class="divider-vertical"></li>
                   	<li><a href="#"><i class="icon-signal icon-white"></i> Stats</a></li>
 					<li class="divider-vertical"></li>

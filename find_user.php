@@ -1,5 +1,8 @@
 <?php require_once 'header.php' ;
 
+
+if($_SESSION['loggedin']) { 
+
 $query = "SELECT * FROM USER WHERE username = '".$username."'";
 $result = $mysqli->query($query);
 
@@ -17,52 +20,15 @@ $row3 = $result->fetch_array();
 
 // add friend 
 $followerid = $uid ; 
-$status = 2 ; // hard value if sending friend request set status to 2
+$status = 2 ; // hard value if sending friend request set status to 2 
 
-// $find_user who still doesn't have a friend request sent and is in the USER table
-$find_user = explode('in', $_POST['find-user']);
-$search_keyword = trim($find_user[0]);
-$search_category = trim($find_user[1]);
-
-// SELECT all distinct uid and their info except the one searching
-if ($search_category == 'users') { 
-	
-	$query = "
-				SELECT DISTINCT U.uid, U.firstname , U.lastname , U.username
-				FROM USER U 
-				where U.uid != ".$uid."
-				AND U.username LIKE '%".$search_keyword."%'
-			 " ;
-	// echo $query ; exit;
-
-} elseif($search_category == 'notes') {
-	$query = " 
-				SELECT notetext,hyperlink,Utime,Nlike 
-				FROM NOTE 
-				WHERE notetext LIKE '%".$search_keyword."%' 
-				ORDER BY nid DESC; 
-			" ;
-	// echo $query ; exit;
-
-} else {
-	// searching for tags
-	$query = "
-			 	SELECT notetext , Utime , Nlike , hyperlink
-			 	FROM NOTE
-			 	WHERE FIND_IN_SET('".$search_keyword."', hyperlink)
-			";
-	// echo $query ; exit;
-}
-//echo $query;
-$result2 = $mysqli->query($query);
-
-require_once('time_ago.php');
+// get the follower count
+$query_follower_count = "SELECT COUNT(followeruid) as fcount FROM FRIENDSHIP WHERE leaderuid = '".$uid."'";
+$result_follower_count = $mysqli->query($query_follower_count);
+$row_follower_count = $result_follower_count->fetch_array();
+// echo $result_follower_count;exit;
 
 ?>
-
-<?php if($_SESSION['loggedin']) { ?>
-
-
 
 <div class="span3 well">
 	<div class="row">
@@ -73,16 +39,71 @@ require_once('time_ago.php');
 		</div>
 		<div class="span3 mt10">
 			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span>
-			<span class=" badge badge-info">15 followers</span>
-			<a href="set_filters.php"><span class="badge badge-inverse">Settings</span></a>
+			<span class=" badge badge-info"><?php echo $row_follower_count['fcount']?> followers</span>
+			<a href="set_filters.php"><span class="badge badge-inverse">filters</span></a>
 		</div>
 		
 		
 	</div>
 </div>
 
+<?php
+
+// $find_user who still doesn't have a friend request sent and is in the USER table
+if($_POST) {
+
+	
+
+	$find_user = explode(' in ', $_POST['find-user']);
+	$search_keyword = trim($find_user[0]);
+	$search_category = trim($find_user[1]);
+
+
+
+	// SELECT all distinct uid and their info except the one searching
+	if ($search_category == 'users') { 
+		
+		$query = "
+					SELECT DISTINCT U.uid, U.firstname , U.lastname , U.username
+					FROM USER U 
+					where U.uid != ".$uid."
+					AND U.username LIKE '%".$search_keyword."%'
+				 " ;
+		// echo $query ; exit;
+
+	} elseif($search_category == 'notes') {
+		$query = " 
+					SELECT notetext,hyperlink,Utime,Nlike 
+					FROM NOTE 
+					WHERE notetext LIKE '%".$search_keyword."%' 
+					ORDER BY nid DESC; 
+				" ;
+		// echo $query ; exit;
+
+	} else {
+		// searching for tags
+		$query = "
+				 	SELECT notetext , Utime , Nlike , hyperlink
+				 	FROM NOTE
+				 	WHERE FIND_IN_SET('".$search_keyword."', hyperlink)
+				";
+		// echo $query ; exit;
+	}
+	//echo $query;
+	$result2 = $mysqli->query($query);
+
+
+
+require_once('time_ago.php');
+
+?>
+
+
+
+
 <div class="span6 well">
 	<h4>You searched for '<?php echo $search_keyword?>' in <?php echo $search_category ?></h4>
+
 	<br/>
 	<?php if($result2->num_rows >= 1 ) { 
 
@@ -97,6 +118,9 @@ require_once('time_ago.php');
 		<div class="span1"><a href="#" class="thumbnail"><img src="http://critterapp.pagodabox.com/img/user.jpg" alt=""></a></div>
 		<div class="span5">
 			<p><?php echo $row['firstname'].' '.$row['lastname'] ; ?> <a href="#">@<?php echo $row['username'] ; ?></a> </p>
+			<p>
+	     		<a class="btn add-friend" name="<?php echo $row['uid'] ; ?>">Add Friend</a>
+		    </p>
 		</div>
 	</div>
 	<hr>
@@ -159,7 +183,7 @@ require_once('time_ago.php');
 		</div>
 	</div>
 	<hr>
-	 <?php }else { 
+	 <?php } else { 
 
 	 					echo "<h6> Sorry no matches founds ! Try a different query or you're friends already</h6>" ;
 	 				} 
@@ -173,7 +197,14 @@ require_once('time_ago.php');
 	var status 		= <?php echo $status ?>;
 </script>
 
-<?php } else { 
+<?php } else {
+
+		echo "<div class='span6 well'>Please enter a search term</div>";
+
+	}
+
+	
+ } else { 
 
 	header('Location:create_new_user.php') ; 
 

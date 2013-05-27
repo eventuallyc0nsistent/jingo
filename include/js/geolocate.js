@@ -92,7 +92,7 @@ function updateMarkerPosition(latLng) {
 }
 
 function updateMarkerAddress(str) {
-  document.getElementById('address').innerHTML = str;
+  $('#address').val(str)
 }
 
 

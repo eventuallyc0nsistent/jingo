@@ -21,7 +21,8 @@ $status		= $_POST['status'];
 // add friend 
 $date = date("Y-m-d H:i:s");
 
-$query = "INSERT INTO FRIENDSHIP( followeruid , leaderuid , status , followdate ) VALUES ('".$followerid."','".$leaderid."','".$status."','".$date."');";
+$query = "UPDATE FRIENDSHIP SET status=1 WHERE followeruid=$followerid AND leaderuid=$leaderid";
+echo $query;
 $mysqli->query($query) or die($mysql->error);
 
 

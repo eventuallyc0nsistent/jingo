@@ -19,18 +19,30 @@ $query3 = "SELECT COUNT(nid) AS ncount FROM NOTE WHERE uid='".$uid."'";
 $result=$mysqli->query($query3);
 $row3 = $result->fetch_array();
 
+// get the follower count
+$query_follower_count = "SELECT COUNT(followeruid) as fcount FROM FRIENDSHIP WHERE leaderuid = '".$uid."'";
+$result_follower_count = $mysqli->query($query_follower_count);
+$row_follower_count = $result_follower_count->fetch_array();
+// echo $result_follower_count;exit;
+
 
 // when submitting the note through the same page
 if($_POST) {
-	//print_r($_POST);
+	// echo "<pre>";print_r($_POST);
 	
 	$note = addslashes($_POST['note']);
 
 	$range = $_POST['radius'];
 
-	$tag_name= $_POST['tag_name'];
-	$tag_name2= $_POST['tag_name2'];
-	$tag_name3= $_POST['tag_name3'];
+	if($_POST['tag_name'] || $_POST['tag_name2'] || $_POST['tag_name3']) {
+		$tag_name= $_POST['tag_name'];
+		$tag_name2= $_POST['tag_name2'];
+		$tag_name3= $_POST['tag_name3'];
+
+	}else {
+
+		$tag_name = $tag_name2 = $tag_name3 = '';
+	}	
 
 	// user co-ordinates
 	$lat = $_POST['lat'];
@@ -39,7 +51,7 @@ if($_POST) {
 
 	// insert note in DB
 	$query = "INSERT INTO NOTE (uid,notetext,x,y,radius,hyperlink)  VALUES ('".$uid."','".$note."',$lat,$lon,'".$radius."','".$tag_name.",".$tag_name2.",".$tag_name3."');";
-	// echo $query;
+	 echo $query;
 	$mysqli->query($query) or die(mysql_errno());
 
 	/*
@@ -111,7 +123,9 @@ margin-bottom: 5px;
           	<p><strong><?php echo $firstname.' '.$lastname ?></strong></p>
 		</div>
 		<div class="span3 mt10">
-			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span> <span class=" badge badge-info">15 followers</span>
+			<span class=" badge badge-warning"><?php echo $row3['ncount'] ;?> notes</span> 
+			<span class=" badge badge-info"><?php echo $row_follower_count['fcount']?> followers</span>
+			<a href="set_filters.php"><span class="badge badge-inverse">filters</span></a>
 		</div>
 		<div class="span4 mt10">
 		    <form accept-charset="UTF-8" action="userhome.php" id="post-note" method="POST">
@@ -143,7 +157,7 @@ margin-bottom: 5px;
 					   <label for="longitude">longitude:</label>
 					   <input id="lon" type="text" name="lon" value="" maxlength="100" />
 					    <b>Closest matching address:</b>
-					    <div id="address"></div><br/>
+					    <input id="address" type="text" name="address" value="" maxlength="100" ><br/>
 					 </div>
 				</div>
 

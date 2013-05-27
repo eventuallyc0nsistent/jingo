@@ -29,7 +29,48 @@ $(document).ready(function(){
 			type : "POST" ,
 			data : "leaderid="+leaderid+"&followerid="+followerid+"&status="+status,
 			success : function () {
+				//window.location.reload(true);
+				// $(this).attr('class','btn') ;
+			}
+
+		});
+
+	});
+
+	// accept friend
+	$('.accept-friend').click(function(){
+
+		var followerid = $(this).attr('name');
+
+		console.log(followerid);
+		console.log(leaderid);
+		$.ajax({
+			url : "accept_friend.php",
+			type : "POST" ,
+			data : "leaderid="+leaderid+"&followerid="+followerid+"&status="+status,
+			success : function () {
 				window.location.reload(true);
+				// $(this).attr('class','btn') ;
+			}
+
+		});
+
+	});
+
+	// decline friend
+	$('.decline-friend').click(function(){
+
+		var followerid = $(this).attr('name');
+
+		console.log(followerid);
+		console.log(leaderid);
+		$.ajax({
+			url : "decline_friend.php",
+			type : "POST" ,
+			data : "leaderid="+leaderid+"&followerid="+followerid+"&status="+status,
+			success : function () {
+				window.location.reload(true);
+				// $(this).attr('class','btn') ;
 			}
 
 		});
