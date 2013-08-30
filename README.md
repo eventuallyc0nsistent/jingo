@@ -50,38 +50,5 @@ Add inputs like radius for post , tags and schedule for post.
 
 + __settings.php___ : User can edit his old settings
 
-
-#List to complete 
-+ Register  [][DONE]
-+ Login / Logout  [][DONE]
-+ Post Note [][DONE]
-
-+ Schedule --- 1 hr , 1 hr  -- 1
-	scid - PRIMARY KEY,
-	nid - note id,
-	timefrom - time from,
-	timeto - time to,
-	datefrom - date from,
-	dateto - date to,
-	repeatday - Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday
-	+ Adding Schedule --- [][DONE]
-	+ Getting messages on schedule
-
-+ Filter [][Needs to be merged] --- 1 hr , 1 hr -- 1
-
-+ Friendship [][DONE] --- 2 hrs , 3 hrs -- 2.5
-
-+ Comments [TO DO] --- Use Jiani's code if you can't do it ---- 2 hrs , 2 hrs -- 2
-+ Search [Searching Friends, Notes, Tags, Everything ] [DONE]---- 5 hrs , 5 hrs -- 5
-
-+ Like [][DONE]  -------------- EXTRA CREDIT
-+ Bookmark Notes [][DONE]  -------------- EXTRA CREDIT
-+ Model Area [need to ask TA]  -------------- EXTRA CREDIT
-+ Recommend Tags [][TO DO]  -------------- EXTRA CREDIT
-
-+ Improvement [need to ask TA]
-+ documentation [Pretty much documented code] -- being taken care of already
-+ UI and Overall [Works ok until now. Can add suggestions here] -- Pretty good
-
 #Ignored files
 __header.php__

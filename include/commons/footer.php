@@ -1,18 +1,15 @@
-
-<?php } else { 
-
-	header('Location:signup.php') ; 
-
-} ?>
-
-</div> <!-- close div.container -->
+<div class="footer">
+<p>&copy; Jingo 2013</p>
+</div>
+</div> 
+<!-- /container -->
 <script type="text/javascript">
 
 $(document).ready(function(){
 
 	// to get the location of the user
 	$(function () {
-		getLocation();
+		//getLocation();
 	});
 
 	// submit find-user form on ENTER key

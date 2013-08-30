@@ -21,6 +21,17 @@ $result_follower_count = $mysqli->query($query_follower_count);
 $row_follower_count = $result_follower_count->fetch_array();
 // echo $result_follower_count;exit;
 
+
+// Get available filters for user 
+
+$query_get_filters = "
+					SELECT Aname,state,tag,x,y 
+					FROM FILTER
+					WHERE uid = $uid 
+				 ";
+
+$result_get_filters=$mysqli->query($query_get_filters);
+
 // Posting Filter
 if($_POST) {
 
@@ -51,7 +62,6 @@ if($_POST) {
 					";
 
 	$mysqli->query($query_address) ;
-
 }
 
 ?>
@@ -90,6 +100,11 @@ margin-bottom: 5px;
 		</div>
 		
 		
+	</div>
+	<div class="span3" style="margin:10px 0">
+		<?php while ($row = $result_get_filters->fetch_array()) { ?>
+		<a href="#"><span class="badge"><?php echo $row['state'] ?></span></a>
+		<?php } ?>
 	</div>
 </div>
 

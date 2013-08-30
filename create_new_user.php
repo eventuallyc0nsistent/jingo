@@ -1,4 +1,4 @@
-<?php require_once('header.php') ; ?>
+<?php require_once('include/commons/header.php') ; ?>
 	<div class ="hero-unit">
 			<h1>Create a new user</h1>
 			<p>
@@ -81,4 +81,4 @@
         </div>
       </div>
 	</div>
-<?php require_once('footer.php') ; ?>
+<?php require_once('include/commons/footer.php') ; ?>

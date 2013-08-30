@@ -32,8 +32,11 @@ if (isset($_SESSION['loggedin'])) {
 
 	<script type="text/javascript" src="include/js/jquery.form.js"></script>
 	<script type="text/javascript" src="include/js/datetimepicker.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="include/js/google.api.js"></script>
+	
+	<!--
 	<script type="text/javascript" src="include/js/geolocate.js"></script>
+	-->
 	<title>Jingo</title>
 
 	<script type="text/javascript">
